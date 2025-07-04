@@ -4,5 +4,5 @@
 
 
 
-docker run  --env-file .env_api_server dwani/api-server:latest
+docker run  --env-file .env_api_server -p 80:80 dwani/api-server:latest
 
