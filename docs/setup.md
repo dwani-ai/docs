@@ -6,11 +6,11 @@ Setup
 
     - sudo systemctl restart docker
 
-    - sudo docker run --runtime nvidia -it --rm -p 8000:8000 slabstech/dwani-vllm
+    - sudo docker run --runtime nvidia -it --rm -p 9000:9000 slabstech/dwani-vllm
 
     - export HF_TOKEN='my-nsma-is-what'
 
-    - vllm serve google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port 8000 --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --max-model-len 16384     --dtype bfloat16 
+    - vllm serve google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --max-model-len 16384     --dtype bfloat16 
 
 
 - docs-indic-server
@@ -126,4 +126,8 @@ python src/server/docs_api.py  --host 0.0.0.0 --port 7861
 git clone https://github.com/dwani-ai/dwani-api-server.git
 cd dwani-api-server
 
+python -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
 docker build -t dwani/api-server-arm64:latest -f Dockerfile .
