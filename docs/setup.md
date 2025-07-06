@@ -32,6 +32,19 @@ python src/server/docs_api.py  --host 0.0.0.0 --port 7861
 
 - Dependencies
   - decord
+  - olmocr
+  - ffmpeg
+
+- ffmpeg
+  - sudo apt update
+  - sudo apt install ffmpeg
+  - ffmpeg -version
+
+sudo apt update
+sudo apt install cmake ffmpeg build-essential python3-dev
+
+sudo apt install pkg-config libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libswresample-dev  libavfilter-dev 
+
 
 ```bash
 cd
@@ -43,7 +56,14 @@ cd decord
 
 mkdir build && cd build
 
-cmake .. -DUSE_CUDA=0 -DCMAKE_BUILD_TYPE=Release
+export CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda
+export CUDACXX=/usr/local/cuda/bin/nvcc
+
+nvcc --version
+
+cmake .. -DUSE_CUDA=1 -DCMAKE_BUILD_TYPE=Release -DFFMPEG_DIR=/usr
+
+cmake .. -DUSE_CUDA=1 -DCMAKE_BUILD_TYPE=Release
 
 make
 
