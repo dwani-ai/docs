@@ -46,6 +46,24 @@ sudo apt install cmake ffmpeg build-essential python3-dev
 sudo apt install pkg-config libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libswresample-dev  libavfilter-dev 
 
 
+find /usr/lib* -name libavformat.so
+
+
+
+sudo ln -s /usr/lib/aarch64-linux-gnu/libavformat.so /usr/lib/libavformat.so
+sudo ln -s /usr/lib/aarch64-linux-gnu/libavcodec.so /usr/lib/libavcodec.so
+sudo ln -s /usr/lib/aarch64-linux-gnu/libavutil.so /usr/lib/libavutil.so
+sudo ln -s /usr/lib/aarch64-linux-gnu/libavfilter.so /usr/lib/libavfilter.so
+sudo ln -sf /usr/lib/aarch64-linux-gnu/libavdevice.so.58 /usr/lib/libavdevice.so
+
+sudo ln -s /usr/lib/aarch64-linux-gnu/libswresample.so  /usr/lib/libswresample.so
+
+sudo ldconfig
+# Add other FFmpeg libs as 
+
+cmake .. -DUSE_CUDA=1 -DCMAKE_BUILD_TYPE=Release -DFFMPEG_LIB_DIR=/usr/lib/aarch64-linux-gnu -DFFMPEG_INCLUDE_DIR=/usr/include
+
+
 ```bash
 cd
 mkdir external
