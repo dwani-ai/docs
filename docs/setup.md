@@ -114,3 +114,16 @@ pip install "numpy<2.0"
 ```
 in olmocr :  pyproject.toml - remove sql-kernem and sglang
 set python version to 3.10
+
+
+python src/server/docs_api.py  --host 0.0.0.0 --port 7861
+
+
+--
+
+- dwani-api-server
+
+git clone https://github.com/dwani-ai/dwani-api-server.git
+cd dwani-api-server
+
+docker build -t dwani/api-server-arm64:latest -f Dockerfile .
