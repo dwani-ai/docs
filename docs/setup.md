@@ -45,6 +45,7 @@ sudo apt install cmake ffmpeg build-essential python3-dev
 
 sudo apt install pkg-config libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libswresample-dev  libavfilter-dev 
 
+sudo apt-get install poppler-utils
 
 find /usr/lib* -name libavformat.so
 
@@ -131,3 +132,17 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 docker build -t dwani/api-server-arm64:latest -f Dockerfile .
+
+
+---
+
+Proxy Server
+
+Install [docker in VM](docker_setup_vm.md) - 
+
+docker build -t dwani/proxy-server:latest -f Dockerfile .
+
+
+docker push dwani/proxy-server:latest
+
+docker run --env-file .env -p 80:80 dwani/proxy-server:latest
