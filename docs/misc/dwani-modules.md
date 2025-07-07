@@ -52,7 +52,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 
-python src/server/asr_api.py --host 0.0.0.0 --port 7863 --device cuda
+python src/multilingual/asr_api.py --host 0.0.0.0 --port 7863 --device cuda
 
 ```
 ----
@@ -69,8 +69,12 @@ source venv/bin/activate
 pip install --upgrade pip setuptools wheel packaging cython
 
 pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-pip install -r requirements.txt
 
+#pip install -r requirements.txt
+
+pip install -e git+https://github.com/VarunGumma/IndicTransToolkit.git@main#egg=IndicTransToolkit
+
+pip install fastapi uvicorn  "numpy<2.0"
 python src/server/translate_api.py --host 0.0.0.0 --port 7862 --device cuda
 ```
 
@@ -170,8 +174,8 @@ index 0eec834..431216f 100644
 ```bash
 git clone https://github.com/dwani-ai/tts-indic-server
 cd tts-indic-server
-
-
+git checkout gh-200
+export HF_TOKEN='this-my-token'
 python -m venv  venv
 source venv/bin/activate
 pip install wheel packaging

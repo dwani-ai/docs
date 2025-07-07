@@ -147,3 +147,89 @@ docker build -t dwani/proxy-server:latest -f Dockerfile .
 docker push dwani/proxy-server:latest
 
 docker run --env-file .env -p 80:80 dwani/proxy-server:latest
+
+
+--
+
+Translate Server
+
+- https://github.com/dwani-ai/indic-translate-server.git
+```bash
+git clone https://github.com/dwani-ai/indic-translate-server.git
+cd indic-translate-server
+
+python -m venv --system-site-packages venv
+
+source venv/bin/activate
+pip install --upgrade pip setuptools wheel packaging cython
+
+pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+
+#pip install -r requirements.txt
+
+pip install -e git+https://github.com/VarunGumma/IndicTransToolkit.git@main#egg=IndicTransToolkit
+
+pip install fastapi uvicorn  "numpy<2.0"
+python src/server/translate_api.py --host 0.0.0.0 --port 7862 --device cpu
+```
+
+
+
+- ### ASR - Automatic Speech Recognition / Speech to Text
+    - https://github.com/dwani-ai/asr-indic-server.git
+```bash
+git clone https://github.com/dwani-ai/asr-indic-server.git
+cd asr-indic-server
+    
+python -m venv --system-site-packages venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+
+python src/multilingual/asr_api.py --host 0.0.0.0 --port 7863 --device cuda
+
+```
+
+ASR - English
+
+curl --silent --remote-name https://raw.githubusercontent.com/speaches-ai/speaches/master/compose.yaml
+curl --silent --remote-name https://raw.githubusercontent.com/speaches-ai/speaches/master/compose.cuda.yaml
+export COMPOSE_FILE=compose.cuda.yaml
+
+sudo docker compose -f compose.cuda.yaml up -d
+
+curl -X 'POST' \
+  'http://localhost:8000/v1/models/Systran/faster-whisper-large-v3' \
+  -H 'accept: application/json' \
+  -d ''
+
+
+  curl -X 'POST' \
+  'http://localhost:8000/v1/models/speaches-ai/Kokoro-82M-v1.0-ONNX' \
+  -H 'accept: application/json' \
+  -d ''
+
+
+  -
+
+- ### TTS - Text to Speech 
+- https://github.com/dwani-ai/tts-indic-server
+```bash
+git clone https://github.com/dwani-ai/tts-indic-server
+cd tts-indic-server
+git checkout gh-200
+export HF_TOKEN='this-my-token'
+python -m venv  venv
+source venv/bin/activate
+pip install wheel packaging
+
+pip install -r requirements.txt
+
+ pip uninstall torch torchaudio torchvision
+
+pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+
+python src/gh200/main.py --host 0.0.0.0 --port 7864 --config config_two
+```
+
