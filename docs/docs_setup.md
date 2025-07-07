@@ -1,17 +1,3 @@
-Setup
-
-- vllm + gemma3 Setup
-    - Add daemon.json to /etc/docker
-    - https://github.com/dwani-ai/deploy/blob/main/files/daemon.json
-
-    - sudo systemctl restart docker
-
-    - sudo docker run --runtime nvidia -it --rm -p 9000:9000 slabstech/dwani-vllm
-
-    - export HF_TOKEN='my-nsma-is-what'
-
-    - vllm serve google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --max-model-len 16384     --dtype bfloat16 
-
 
 - docs-indic-server
   -- ### Documents 
@@ -119,31 +105,3 @@ set python version to 3.10
 
 python src/server/docs_api.py  --host 0.0.0.0 --port 7861
 
-
---
-
-- dwani-api-server
-
-git clone https://github.com/dwani-ai/dwani-api-server.git
-cd dwani-api-server
-
-python -m venv venv
-source venv/bin/activate
-
-pip install -r requirements.txt
-docker build -t dwani/api-server-arm64:latest -f Dockerfile .
-
-
----
-
-Proxy Server
-
-sudo apt install nano
-Install [docker in VM](docker_setup_vm.md) - 
-
-docker build -t dwani/proxy-server:latest -f Dockerfile .
-
-
-docker push dwani/proxy-server:latest
-
-docker run --env-file .env -p 80:80 dwani/proxy-server:latest
