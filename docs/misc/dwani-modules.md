@@ -52,7 +52,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 
-python src/server/asr_api.py --host 0.0.0.0 --port 7863 --device cuda
+python src/multilingual/asr_api.py --host 0.0.0.0 --port 7863 --device cuda
 
 ```
 ----
