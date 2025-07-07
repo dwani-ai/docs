@@ -7,6 +7,8 @@ Setup dwani.ai - Multimodal Inference API
 - [vllm server](docs/vllm_setup.md) - text + images
 - [docs-api-server](docs/docs_setup.md) - Documents : extraction, translaition, query
 - [translate_server](docs/translate_server.md) - Translation for Indian languages
+- [tts-server](docs/tts-server.md) - Text to Speech - Indian languages
+- [asr-server](docs/asr_server.md) - Automatic Speech Recogntion
 - [api-server](docs/api_server_setup.md) - Swagger setup
 - [proxy-server](docs/proxy_setup_vm.md) - Load balancer
 

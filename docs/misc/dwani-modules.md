@@ -174,8 +174,8 @@ index 0eec834..431216f 100644
 ```bash
 git clone https://github.com/dwani-ai/tts-indic-server
 cd tts-indic-server
-
-
+git checkout gh-200
+export HF_TOKEN='this-my-token'
 python -m venv  venv
 source venv/bin/activate
 pip install wheel packaging
