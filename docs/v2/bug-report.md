@@ -10,6 +10,26 @@ dwani/vllm-arm64:latest
 sudo docker exec -it my_vllm_container /bin/bash
 
 
+vllm serve Qwen/Qwen2.5-1.5B-Instruct
+
+
+docker run --runtime nvidia --gpus all \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    -p 8000:8000 \
+    --ipc=host \
+    vllm/vllm-openai:latest \
+    --model Qwen/Qwen2.5-1.5B-Instruct
+
+
+
+docker run --runtime nvidia --gpus all \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    --env "HUGGING_FACE_HUB_TOKEN=<secret>" \
+    -p 8000:8000 \
+    --ipc=host \
+    vllm/vllm-openai:latest \
+    --model Qwen/Qwen2.5-1.5B-Instruct
+
 
 - triton
 nvcr.io/nvidia/tritonserver:25.06-vllm-python-py3
