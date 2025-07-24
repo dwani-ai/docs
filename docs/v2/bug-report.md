@@ -173,3 +173,21 @@ ImportError: libtorch_cuda.so: cannot open shared object file: No such file or d
 
 
 ---
+
+
+
+pytorch image
+
+
+------
+ > [3/3] RUN pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.1/vllm-0.9.2.dev144+g9206d0ff0.d20250618-cp310-cp310-linux_aarch64.whl:
+0.420 ERROR: vllm-0.9.2.dev144+g9206d0ff0.d20250618-cp310-cp310-linux_aarch64.whl is not a supported wheel on this platform.
+------
+Dockerfile.pytorch:9
+--------------------
+   7 |     
+   8 |     
+   9 | >>> RUN pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.1/vllm-0.9.2.dev144+g9206d0ff0.d20250618-cp310-cp310-linux_aarch64.whl
+  10 |     
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.1/vllm-0.9.2.dev144+g9206d0ff0.d20250618-cp310-cp310-linux_aarch64.whl" did not complete successfully: exit code: 1
