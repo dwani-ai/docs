@@ -21,4 +21,11 @@ docker run --gpus all -it --rm --net=host -p 8001:8001 \
 
 
 
-https://github.com/triton-inference-server/server
+git clone https://github.com/triton-inference-server/server
+
+cd server/docs/examples/
+
+bash fetch_models.sh
+
+quickstart - https://github.com/triton-inference-server/server/blob/main/docs/getting_started/quickstart.md
+
