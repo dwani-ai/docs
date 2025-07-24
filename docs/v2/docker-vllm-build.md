@@ -1,12 +1,22 @@
-Container for vllm
-
-git clone git@github.com:sachinsshetty/jetson-containers.git
-
-https://github.com/sachinsshetty/jetson-containers/tree/master/packages/llm/vllm
+Docker Container for vllm
 
 
-- build : vllm image
-- git clone https://github.com/dusty-nv/jetson-containers
+- python3.10 -m venv venv
+- source venv/bin/activate
+- pip install torch==2.7.1 torchaudio==2.7.1 torchvision --index-url https://download.pytorch.org/whl/cu128
+
+
+https://github.com/sachinsshetty/jetson-containers/blob/master/docs/setup.
+
+
+sudo /etc/docker/daemon.json
+
+copy file contents from [daemon.json](../../files/daemon.json) 
+
+
+ sudo systemctl restart docker
+
+- git clone https://github.com/sachinsshetty/jetson-containers
 - bash jetson-containers/install.sh
 - jetson-containers build vllm
 
