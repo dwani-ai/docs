@@ -1,3 +1,15 @@
+Bug Report
+
+sudo docker run -it --runtime nvidia --gpus all \
+-v ~/.cache/huggingface:/root/.cache/huggingface \
+-p 8000:8000 \
+--ipc=host \
+--name my_vllm_container \
+dwani/vllm-arm64:latest
+
+sudo docker exec -it my_vllm_container /bin/bash
+
+
 
 - triton
 nvcr.io/nvidia/tritonserver:25.06-vllm-python-py3
@@ -10,6 +22,8 @@ nvcr.io/nvidia/pytorch:25.06-py3
 
 
 - 
+
+<!-- 
 sudo docker pull nvcr.io/nvidia/tritonserver:25.06-vllm-python-py3
 
 
@@ -29,3 +43,4 @@ bash fetch_models.sh
 
 quickstart - https://github.com/triton-inference-server/server/blob/main/docs/getting_started/quickstart.md
 
+-->
