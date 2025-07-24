@@ -24,7 +24,7 @@ sudo ./cmake-3.31.8-linux-aarch64.sh --prefix=/usr/local --exclude-subdir
 
 pip uninstall torch torchvision torchaudio
 
-pip install torch==2.7.0 torchaudio==2.7.0 torchvision --index-url https://download.pytorch.org/whl/cu128
+pip install torch==2.7.1 torchaudio==2.7.1 torchvision --index-url https://download.pytorch.org/whl/cu128
 
 
 
@@ -37,7 +37,7 @@ pip install --upgrade setuptools twine setuptools-scm
 
 
 pip install -r requirements/cuda.txt
-export MAX_JOBS=4
+export MAX_JOBS=8
 pip install -vvv -e . --no-build-isolation
 
 VLLM_TARGET_DEVICE=cuda python setup.py bdist_wheel
