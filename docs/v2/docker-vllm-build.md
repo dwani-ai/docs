@@ -13,7 +13,7 @@ copy file contents from [daemon.json](../../files/daemon.json)
 
 
 ```bash
- sudo systemctl restart 
+ sudo systemctl restart docker
  
  export INDEX_HOST=jetson-ai-lab.io
 
