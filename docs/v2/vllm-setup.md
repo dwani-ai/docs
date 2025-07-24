@@ -38,7 +38,7 @@ pip install --upgrade setuptools twine setuptools-scm
 
 pip install -r requirements/cuda.txt
 export MAX_JOBS=8
-pip install -vvv -e . --no-build-isolation
+##pip install -vvv -e . --no-build-isolation
 
 VLLM_TARGET_DEVICE=cuda python setup.py bdist_wheel
 pip install dist/*.whl
@@ -52,3 +52,4 @@ Add - daemon.json to /etc/docker/
 --> 
 
 
+sudo apt install python3.12 python3.12-venv 

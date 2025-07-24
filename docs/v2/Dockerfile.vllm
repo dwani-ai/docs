@@ -1,4 +1,4 @@
 from dwani/vllm-arm64:latest
 
-RUN pip install pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.2/vllm-0.10.0rc3.dev15+g5a19a6c67.d20250724-cp310-cp310-linux_aarch64.whl
+RUN pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.2/vllm-0.10.0rc3.dev15+g5a19a6c67.d20250724-cp310-cp310-linux_aarch64.whl
 
