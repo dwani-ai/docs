@@ -21,6 +21,38 @@ docker run --runtime nvidia --gpus all \
     --model Qwen/Qwen2.5-1.5B-Instruct
 
 
+---
+
+
+ sudo docker run --runtime nvidia --gpus all \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    -p 8000:8000 \
+    --ipc=host \
+    vllm/vllm-openai:latest \
+    --model Qwen/Qwen2.5-1.5B-Instruct
+Unable to find image 'vllm/vllm-openai:latest' locally
+latest: Pulling from vllm/vllm-openai
+Digest: sha256:37cd5bd18d220a0f4c70401ce1d4a0cc588fbfe03cc210579428f2c47e6eac33
+Status: Downloaded newer image for vllm/vllm-openai:latest
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+exec /usr/bin/python3: exec format error
+
+
+---
+
+DOCKER_BUILDKIT=1 docker build . \
+  --target vllm-openai \
+  --platform "linux/arm64" \
+  -t vllm/vllm-gh200-openai:latest \
+  --build-arg max_jobs=66 \
+  --build-arg nvcc_threads=2 \
+  --build-arg torch_cuda_arch_list="9.0+PTX" \
+  --build-arg vllm_fa_cmake_gpu_arches="90-real"
+
+
+--
+
+
 
 docker run --runtime nvidia --gpus all \
     -v ~/.cache/huggingface:/root/.cache/huggingface \

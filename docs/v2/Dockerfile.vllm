@@ -1,4 +1,9 @@
-from dwani/vllm-arm64:latest
+FROM nvcr.io/nvidia/cuda:12.8.1-cudnn-devel-ubuntu22.04
 
-RUN pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.2/vllm-0.10.0rc3.dev15+g5a19a6c67.d20250724-cp310-cp310-linux_aarch64.whl
 
+
+RUN apt-get update && apt-get install -y python3 python3-pip
+
+
+
+RUN pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.1/vllm-0.9.2.dev144+g9206d0ff0.d20250618-cp310-cp310-linux_aarch64.whl
