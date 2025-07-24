@@ -20,6 +20,22 @@ docker run --runtime nvidia --gpus all \
     vllm/vllm-openai:latest \
     --model Qwen/Qwen2.5-1.5B-Instruct
 
+docker run --runtime nvidia --gpus all \
+    -v ~/.cache/huggingface:/root/.cache/huggingface \
+    -p 8000:8000 \
+    --ipc=host \
+    dwani/vllm-new:latest \
+    --model Qwen/Qwen2.5-1.5B-Instruct
+
+
+sudo docker run --runtime nvidia --gpus all \
+  -v ~/.cache/huggingface:/root/.cache/huggingface \
+  -p 8000:8000 \
+  --ipc=host \
+  dwani/vllm-new:latest \
+  python3 -m vllm.entrypoints.api_server --model Qwen/Qwen2.5-1.5B-Instruct
+
+
 
 ---
 
