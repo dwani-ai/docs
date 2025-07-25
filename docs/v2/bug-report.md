@@ -12,6 +12,7 @@ sudo docker exec -it my_vllm_container /bin/bash
 
 vllm serve Qwen/Qwen2.5-1.5B-Instruct
 
+vllm serve Qwen/Qwen3-0.6B
 
 docker run --runtime nvidia --gpus all \
     -v ~/.cache/huggingface:/root/.cache/huggingface \
