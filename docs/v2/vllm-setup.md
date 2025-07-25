@@ -1,16 +1,5 @@
 vLLM for arm64 
-
-- For GH200, GB200 Nvidia GPU
-
-- Python - vllm arm64 wheel on GitHub 
-  - https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.1/vllm-0.9.2.dev144+g9206d0ff0.d20250618-cp310-cp310-linux_aarch64.whl
-
-
-- vllm arm64 docker container 
- - https://hub.docker.com/r/dwani/vllm-arm64 
- - docker pull dwani/vllm-arm64:latest
  
-
 - Create vllm library 
 ```bash
 
@@ -45,11 +34,10 @@ pip install dist/*.whl
 ```
 
 
-
-<!-- 
-Add - daemon.json to /etc/docker/
-- sudo systemctl restart docker
---> 
-
-
-sudo apt install python3.12 python3.12-venv 
+- Reference
+  - For GH200, GB200 Nvidia GPU
+  - Python - vllm arm64 wheel on GitHub 
+    - https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.1/vllm-0.9.2.dev144+g9206d0ff0.d20250618-cp310-cp310-linux_aarch64.whl
+  - vllm arm64 docker container 
+  - https://hub.docker.com/r/dwani/vllm-arm64 
+  - docker pull dwani/vllm-arm64:latest

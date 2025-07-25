@@ -1,7 +1,7 @@
 Docker Container for vllm
 
 ```bash
-python3.10 -m venv venv
+python3.12 -m venv venv
 source venv/bin/activate
 pip install torch==2.7.1 torchaudio==2.7.1 torchvision --index-url https://download.pytorch.org/whl/cu128
 
