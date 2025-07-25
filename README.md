@@ -1,6 +1,13 @@
-# deploy - dwani.ai - Multimodal Inference API
+# deploy - dwani.ai - Document Analytics Platform
 
-dwani.ai is a self-hosted GenAI platform for multimodal inference, supporting text, images, documents, and speech in Indian languages. 
+dwani.ai is a Document Analytics Platform
+
+- Designed for Indian + European languages. 
+- It can be self-hosted and provides multimodal inference, supporting
+    - text
+    - images 
+    - documents
+    - speech
 
 ---
 
