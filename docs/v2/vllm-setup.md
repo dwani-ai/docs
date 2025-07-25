@@ -26,7 +26,7 @@ pip install --upgrade setuptools twine setuptools-scm
 
 
 pip install -r requirements/cuda.txt
-export MAX_JOBS=8
+export MAX_JOBS=16
 ##pip install -vvv -e . --no-build-isolation
 
 VLLM_TARGET_DEVICE=cuda python setup.py bdist_wheel
