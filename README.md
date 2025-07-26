@@ -38,8 +38,8 @@ Each service is modular and can be set up independently. See linked docs for det
 
 | Component        | Description                                  | Setup Guide                                      |
 |------------------|----------------------------------------------|--------------------------------------------------|
-| **vllm server**  | Text + image inference                       | [vllm_setup.md](docs/vllm_setup.md)              |
-| **docs-api-server** | Document extraction, translation, query   | [docs/v2/vllm_deplpy.md](docs/v2/vllm_deploy.md)              |
+| **vllm server**  | Text + image inference                       | [docs/v2/vllm_deplpy.md](docs/v2/vllm_deploy.md) |
+| **docs-api-server** | Document extraction, translation, query   | [docs_setup.md](docs/docs_setup.md)              |
 | **translate_server** | Indian language translation              | [translate_server.md](docs/translate_server.md)   |
 | **tts-server**   | Text to speech (Indian languages)            | [tts-server.md](docs/tts-server.md)              |
 | **asr-server**   | Automatic Speech Recognition                 | [asr_server.md](docs/asr_server.md)              |
