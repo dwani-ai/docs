@@ -20,6 +20,9 @@ pip install torch==2.7.1 torchaudio==2.7.1 torchvision --index-url https://downl
 git clone https://github.com/vllm-project/vllm.git
 
 cd vllm
+
+git checkout 6d8d0a24c02bfd84d46b3016b865a44f048ae84b
+
 python use_existing_torch.py 
 
 pip install --upgrade setuptools twine setuptools-scm
@@ -41,3 +44,17 @@ pip install dist/*.whl
   - vllm arm64 docker container 
   - https://hub.docker.com/r/dwani/vllm-arm64 
   - docker pull dwani/vllm-arm64:latest
+
+
+https://docs.vllm.ai/en/latest/deployment/docker.html#building-vllms-docker-image-from-source
+
+
+# optionally specifies: --build-arg max_jobs=8 --build-arg nvcc_threads=2
+DOCKER_BUILDKIT=1 docker build . \
+    --target vllm-openai \
+    --tag vllm/vllm-openai \
+    --file docker/Dockerfile \ 
+    --build-arg torch_cuda_arch_list="" \
+    --build-arg max_jobs=8 \
+    --build-arg nvcc_threads=2 \
+    --platform "linux/arm64"
