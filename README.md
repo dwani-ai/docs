@@ -55,6 +55,8 @@ Each service is modular and can be set up independently. See linked docs for det
 - build vllm for arm64 / GH200/GB200
   - [docs/v2/README.md](docs/v2/README.md)
 
+- deployment is optimised for arm64, VRAM > 80GB 
+
 --- 
 
 ## Model Dependencies
