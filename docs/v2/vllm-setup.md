@@ -20,6 +20,9 @@ pip install torch==2.7.1 torchaudio==2.7.1 torchvision --index-url https://downl
 git clone https://github.com/vllm-project/vllm.git
 
 cd vllm
+
+git checkout 6d8d0a24c02bfd84d46b3016b865a44f048ae84b
+
 python use_existing_torch.py 
 
 pip install --upgrade setuptools twine setuptools-scm
@@ -27,7 +30,7 @@ pip install --upgrade setuptools twine setuptools-scm
 
 pip install -r requirements/cuda.txt
 export MAX_JOBS=16
-##pip install -vvv -e . --no-build-isolation
+
 
 VLLM_TARGET_DEVICE=cuda python setup.py bdist_wheel
 pip install dist/*.whl
@@ -37,7 +40,4 @@ pip install dist/*.whl
 - Reference
   - For GH200, GB200 Nvidia GPU
   - Python - vllm arm64 wheel on GitHub 
-    - https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.1/vllm-0.9.2.dev144+g9206d0ff0.d20250618-cp310-cp310-linux_aarch64.whl
-  - vllm arm64 docker container 
-  - https://hub.docker.com/r/dwani/vllm-arm64 
-  - docker pull dwani/vllm-arm64:latest
+    - 
