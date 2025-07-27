@@ -18,8 +18,9 @@ DOCKER_BUILDKIT=1 sudo docker build . \
   --platform linux/arm64
 
 
-sudo docker run --runtime nvidia -it --rm -p 9000:9000 slabstech/vllm-openai:latest --model google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.8 --tensor-parallel-size 1 --max-model-len 65536     --dtype bfloat16   --env "HUGGING_FACE_HUB_TOKEN=$HF_TOKEN"
-
+sudo docker run --runtime nvidia -it --rm -p 9000:9000    --env "HUGGING_FACE_HUB_TOKEN=$HF_TOKEN"
+ slabstech/vllm-openai:latest --model google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.8 --tensor-parallel-size 1 --max-model-len 65536     --dtype bfloat16
+ 
 sudo docker tag vllm/vllm-openai:latest dwani/vllm-openai:latest
 
 

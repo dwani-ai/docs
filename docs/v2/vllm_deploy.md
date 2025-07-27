@@ -16,5 +16,18 @@ pip install torch==2.7.1 torchaudio==2.7.1 torchvision --index-url https://downl
 pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v.0.0.4/vllm-0.10.1.dev0+g6d8d0a24c.d20250726-cp312-cp312-linux_aarch64.whl
 
 
-vllm serve Qwen/Qwen3-0.6B
+
+vllm serve google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.8 --tensor-parallel-size 1 --max-model-len 65536     --dtype bfloat16
+
 ```
+
+
+for 3.10 > 
+
+pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.5/vllm-0.10.1.dev0+g6d8d0a24c.d20250726-cp310-cp310-linux_aarch64.whl
+
+
+<!-- 
+vllm serve Qwen/Qwen3-0.6B
+
+-->
