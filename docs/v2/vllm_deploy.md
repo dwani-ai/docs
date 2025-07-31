@@ -20,6 +20,8 @@ pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v.0.0.4/vll
 vllm serve google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.8 --tensor-parallel-size 1 --max-model-len 65536     --dtype bfloat16
 
 ```
+https://docs.vllm.ai/en/latest/configuration/engine_args.html#modelconfig
+
 
 
 for 3.10 > 
@@ -31,3 +33,6 @@ pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.5/vllm
 vllm serve Qwen/Qwen3-0.6B
 
 -->
+
+- RedHatAI/gemma-3-27b-it-FP8-dynamic
+
