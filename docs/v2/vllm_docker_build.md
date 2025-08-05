@@ -83,3 +83,20 @@ docker run -d \
   vllm/vllm-openai \
   --model Qwen/Qwen3-0.6B \
   --port 8000
+
+
+--
+
+python3 use_existing_torch.py
+DOCKER_BUILDKIT=1 docker build . \
+--file docker/Dockerfile \
+--target vllm-openai \
+--platform "linux/arm64" \
+-t vllm/vllm-gh200-openai:latest \
+--build-arg max_jobs=66 \
+--build-arg nvcc_threads=2 \
+--build-arg torch_cuda_arch_list="9.0 10.0+PTX"
+
+
+https://docs.vllm.ai/en/latest/deployment/docker.html#building-for-arm64aarch64
+
