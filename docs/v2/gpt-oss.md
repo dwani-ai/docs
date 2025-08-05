@@ -38,3 +38,33 @@ https://cookbook.openai.com/articles/run-nvidia
 
 
 https://developer.nvidia.com/blog/delivering-1-5-m-tps-inference-on-nvidia-gb200-nvl72-nvidia-accelerates-openai-gpt-oss-models-from-cloud-to-edge/
+
+
+---
+
+mkdir gpt-oss
+cd gpt-oss
+
+git clone https://github.com/vllm-project/vllm.git
+
+cd vllm
+git checkout releases/gpt-oss
+
+pip install torch==2.7.1 torchaudio==2.7.1 torchvision --index-url https://download.pytorch.org/whl/cu128
+
+
+
+
+python use_existing_torch.py 
+
+pip install --upgrade setuptools twine setuptools-scm
+
+
+pip install -r requirements/cuda.txt
+
+export MAX_JOBS=16
+export NVCC_THREADS=2
+export TORCH_CUDA_ARCH_LIST="9.0 10.0+PTX"
+export VLLM_TARGET_DEVICE=cuda
+
+python setup.py bdist_wheel

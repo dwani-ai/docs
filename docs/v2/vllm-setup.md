@@ -30,7 +30,7 @@ pip install --upgrade setuptools twine setuptools-scm
 
 pip install -r requirements/cuda.txt
 
-export MAX_JOBS=66
+export MAX_JOBS=16
 export NVCC_THREADS=2
 export TORCH_CUDA_ARCH_LIST="9.0 10.0+PTX"
 export VLLM_TARGET_DEVICE=cuda
