@@ -2,6 +2,9 @@ GPT OSS - arm64
 
 pip install 
 
+
+vllm serve openai/gpt-oss-20b
+
 vllm serve openai/gpt-oss-120b
 
 
@@ -29,8 +32,9 @@ export VLLM_TARGET_DEVICE=cuda
 
 python setup.py bdist_wheel
 
+pip install dist/*.whl
 
-
+GptOssForCausalLM
 --- 
 
 https://blog.vllm.ai/2025/08/05/gpt-oss.html
