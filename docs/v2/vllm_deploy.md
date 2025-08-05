@@ -23,6 +23,9 @@ vllm serve google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port
 
 vllm serve RedHatAI/gemma-3-27b-it-FP8-dynamic --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.7 --tensor-parallel-size 1 --max-model-len 65536    --disable-log-requests
 
+
+vllm serve google/gemma-3-27b-it --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.8 --tensor-parallel-size 1 --max-model-len 65536     --dtype bfloat16 --disable-log-requests
+
 ```
 https://docs.vllm.ai/en/latest/configuration/engine_args.html#modelconfig
 
