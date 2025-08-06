@@ -3,9 +3,9 @@ vLLM for arm64
 - Create vllm library 
 ```bash
 
-sudo apt-get install build-essential libnuma-dev
+sudo apt-get install build-essential libnuma-dev -y
 
-sudo apt remove cmake
+sudo apt remove cmake -y
 
 wget https://github.com/Kitware/CMake/releases/download/v3.31.8/cmake-3.31.8-linux-aarch64.sh
 chmod +x cmake-3.31.8-linux-aarch64.sh
@@ -29,10 +29,13 @@ pip install --upgrade setuptools twine setuptools-scm
 
 
 pip install -r requirements/cuda.txt
+
 export MAX_JOBS=16
+export NVCC_THREADS=2
+export TORCH_CUDA_ARCH_LIST=""
+export VLLM_TARGET_DEVICE=cuda
 
-
-VLLM_TARGET_DEVICE=cuda python setup.py bdist_wheel
+python setup.py bdist_wheel
 pip install dist/*.whl
 ```
 
