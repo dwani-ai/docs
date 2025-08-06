@@ -1,6 +1,6 @@
 GPT OSS - arm64
 
-pip install 
+pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.6/vllm-0.10.1.dev398+g9edd1db02.d20250806-cp312-cp312-linux_aarch64.whl
 
 
  export VLLM_USE_FLASHINFER_MXFP4_BF16_MOE=1
@@ -33,7 +33,7 @@ pip install -r requirements/cuda.txt
 
 export MAX_JOBS=16
 export NVCC_THREADS=2
-export TORCH_CUDA_ARCH_LIST="9.0 10.0+PTX"
+export TORCH_CUDA_ARCH_LIST=""
 export VLLM_TARGET_DEVICE=cuda
 
 python setup.py bdist_wheel

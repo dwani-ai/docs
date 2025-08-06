@@ -12,7 +12,7 @@ DOCKER_BUILDKIT=1 sudo docker build . \
 --build-arg max_jobs=16 \
 --build-arg nvcc_threads=4 \
 --build-arg VLLM_MAX_SIZE_MB=1000 \
---build-arg torch_cuda_arch_list="9.0 10.0+PTX"
+--build-arg torch_cuda_arch_list=""
 
 sudo docker tag vllm/vllm-openai:latest dwani/vllm-arm64:latest
 
