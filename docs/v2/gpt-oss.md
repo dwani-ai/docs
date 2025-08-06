@@ -3,6 +3,12 @@ GPT OSS - arm64
 pip install 
 
 
+ export VLLM_USE_FLASHINFER_MXFP4_BF16_MOE=1
+
+ export VLLM_USE_TRTLLM_ATTENTION=1
+export VLLM_USE_TRTLLM_DECODE_ATTENTION=1
+export VLLM_USE_TRTLLM_CONTEXT_ATTENTION=1
+
 vllm serve openai/gpt-oss-20b
 
 vllm serve openai/gpt-oss-120b
