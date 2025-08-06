@@ -2,7 +2,7 @@ vllm - deploy
 
 ```bash
 sudo apt update
-sudo apt updgrade
+sudo apt upgrade
 
 sudo apt install python3.12 python3.12-venv python3.12-dev
 
