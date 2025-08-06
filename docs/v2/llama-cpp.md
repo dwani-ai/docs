@@ -16,7 +16,11 @@ https://blogs.nvidia.com/blog/rtx-ai-garage-openai-oss/
 
 https://huggingface.co/collections/ggml-org/gpt-oss-68923b60bee37414546c70bf
 
+120b
 llama-server -hf ggml-org/gpt-oss-120b-GGUF -c 0 -fa --jinja --reasoning-format none
 
 # Then, access http://localhost:8080
 
+20b
+
+./build/bin/llama-server -hf ggml-org/gpt-oss-20b-GGUF -c 0 -fa --jinja --reasoning-format none
