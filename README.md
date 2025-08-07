@@ -2,6 +2,8 @@
 
 dwani.ai is a Document Analytics Platform
 
+- Live Demo - [https://demo.dwani.ai](https://demo.dwani.ai)
+
 - Designed for Indian + European languages. 
 - It can be self-hosted and provides multimodal inference, supporting
     - text
