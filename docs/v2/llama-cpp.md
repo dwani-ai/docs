@@ -16,12 +16,12 @@ llama.cpp for gpt-oss models from OpenAI
 
 - For Laptop / PC -  gpt-oss-20b
 
-    - ./build/bin/llama-server -hf ggml-org/gpt-oss-20b-GGUF -c 0 -fa --jinja --reasoning-format none --port 9100
+    - ./build/bin/llama-server -hf ggml-org/gpt-oss-20b-GGUF -c 0 -fa --jinja --reasoning-format none --port 9500
 
 
 - For H100/H200 - gpt-oss-120b
 
-    ./build/bin/llama-server -hf ggml-org/gpt-oss-120b-GGUF -c 0 -fa --jinja --reasoning-format none --port 9100
+    ./build/bin/llama-server -hf ggml-org/gpt-oss-120b-GGUF -c 0 -fa --jinja --reasoning-format none --port 9500
 
 
 - Then, access http://localhost:8080
