@@ -12,7 +12,7 @@ llama.cpp for gpt-oss models from OpenAI
 - for CPU 
     - cmake -B build
 
-- cmake --build build --config Release
+- cmake --build build --config Release -j4
 
 - For Laptop / PC -  gpt-oss-20b
 
