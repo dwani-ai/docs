@@ -2,6 +2,8 @@
 
 dwani.ai is a Document Analytics Platform
 
+- Live Demo - [https://demo.dwani.ai](https://demo.dwani.ai)
+
 - Designed for Indian + European languages. 
 - It can be self-hosted and provides multimodal inference, supporting
     - text
@@ -38,7 +40,7 @@ Each service is modular and can be set up independently. See linked docs for det
 
 | Component        | Description                                  | Setup Guide                                      |
 |------------------|----------------------------------------------|--------------------------------------------------|
-| **vllm server**  | Text + image inference                       | [docs/v2/vllm_deplpy.md](docs/v2/vllm_deploy.md) |
+| **vllm server**  | Text + image inference                       | [docs/v2/README.md](docs/v2/README.md) |
 | **docs-api-server** | Document extraction, translation, query   | [docs_setup.md](docs/docs_setup.md)              |
 | **translate_server** | Indian language translation              | [translate_server.md](docs/translate_server.md)   |
 | **tts-server**   | Text to speech (Indian languages)            | [tts-server.md](docs/tts-server.md)              |
@@ -51,7 +53,7 @@ Each service is modular and can be set up independently. See linked docs for det
 ![dwani API](images/dwani-inference.drawio.png "Engine") 
 
 ---
-
+<!-- 
 - build vllm for arm64 / GH200/GB200
   - [docs/v2/README.md](docs/v2/README.md)
 
@@ -66,7 +68,7 @@ Each service is modular and can be set up independently. See linked docs for det
   - docker images
     - dwani/vllm-openai:latest
     -   sudo docker run --gpus all -p 8000:8000 vllm/vllm-openai --model Qwen/Qwen3-0.6B --port 8000
-
+-->
 --- 
 
 ## Model Dependencies

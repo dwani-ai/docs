@@ -16,8 +16,18 @@ DOCKER_BUILDKIT=1 sudo docker build . \
 
 sudo docker tag vllm/vllm-openai:latest dwani/vllm-arm64:latest
 
+sudo docker push dwani/vllm-arm64:latest
 
-sudo docker run --runtime nvidia -it --rm -p 9000:9000 dwani/vllm-openai:latest --model RedHatAI/gemma-3-27b-it-FP8-dynamic --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.7 --tensor-parallel-size 1 --max-model-len 65536 --dtype bfloat16 --disable-log-requests
+
+Test Build - 
+  sudo docker run --gpus all \
+  -p 8000:8000 \
+  dwani/vllm-arm64:latest \
+  --model Qwen/Qwen3-0.6B \
+  --port 8000
+
+
+sudo docker run --runtime nvidia -it --rm -p 9000:9000 dwani/vllm-arm64:latest --model RedHatAI/gemma-3-27b-it-FP8-dynamic --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.7 --tensor-parallel-size 1 --max-model-len 65536 --dtype bfloat16 --disable-log-requests
  
 
 
