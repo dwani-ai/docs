@@ -21,7 +21,6 @@ git clone https://github.com/vllm-project/vllm.git
 
 cd vllm
 
-git checkout 6d8d0a24c02bfd84d46b3016b865a44f048ae84b
 
 python use_existing_torch.py 
 
@@ -31,7 +30,7 @@ pip install --upgrade setuptools twine setuptools-scm
 pip install -r requirements/cuda.txt
 
 export MAX_JOBS=16
-export NVCC_THREADS=2
+export NVCC_THREADS=4
 export TORCH_CUDA_ARCH_LIST=""
 export VLLM_TARGET_DEVICE=cuda
 
