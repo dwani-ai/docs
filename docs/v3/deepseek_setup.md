@@ -1,3 +1,5 @@
+on-b200
+
 sudo apt update
 sudo apt upgrade -y
 
@@ -10,6 +12,12 @@ source venv/bin/activate
 pip install torch==2.7.1 torchaudio==2.7.1 torchvision --index-url https://download.pytorch.org/whl/cu128
 
 
-pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v.0.0.4/vllm-0.10.1.dev0+g6d8d0a24c.d20250726-cp312-cp312-linux_aarch64.whl
+pip install vllm
 
-vllm serve RedHatAI/gemma-3-27b-it-FP8-dynamic --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.4 --tensor-parallel-size 1 --max-model-len 65536    --disable-log-requests
+
+vllm serve deepseek-ai/DeepSeek-V3.1 \
+  --trust-remote-code \
+  --tensor-parallel-size 8 \
+  --enable-expert-parallel \
+  --max-model-len 154000 \
+  --port 8000
