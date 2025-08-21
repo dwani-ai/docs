@@ -8,9 +8,12 @@ python -m venv venv
 source venv/bin/activate
 
 pip install -r requirements.txt
-docker build -t dwani/api-server-arm64:latest -f Dockerfile .
 
 
 
- python -m src.server.main --host 0.0.0.0 --port 18888
- 
+# python -m src.server.main --host 0.0.0.0 --port 18888
+
+uvicorn src.server.main:app --host 0.0.0.0 --port 18888 
+---
+
+ docker build -t dwani/api-server-arm64:latest -f Dockerfile .
