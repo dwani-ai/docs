@@ -5,3 +5,6 @@ pip install mkdocs-material
 
 mkdocs new .
 
+mkdocs serve
+
+mkdocs build
