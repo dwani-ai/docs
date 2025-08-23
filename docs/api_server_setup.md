@@ -18,4 +18,4 @@ uvicorn src.server.main:app --host 0.0.0.0 --port 18888
 
  docker build -t dwani/api-server-arm64:latest -f Dockerfile .
 
-
+docker run --env-file .env.server -p 80:80 dwani/api-server-arm64:latest
