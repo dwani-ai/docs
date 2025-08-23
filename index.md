@@ -22,7 +22,7 @@
 - [License](#license)
 
 ---
--->
+
 ## Overview
 
 **dwani.ai** enables:
@@ -31,6 +31,13 @@
 - Speech-to-text (ASR) and text-to-speech (TTS) for Indian languages
 - Translation across major Indian languages
 - Load balancing and API orchestration
+
+---
+-->
+
+---
+
+![dwani API](../images/dwani-inference.drawio.png "Engine") 
 
 ---
 
@@ -49,8 +56,6 @@ Each service is modular and can be set up independently. See linked docs for det
 | **proxy-server** | Load balancer                                | [proxy_setup_vm.md](docs/proxy_setup_vm.md)       |
 
 ---
-
-![dwani API](../images/dwani-inference.drawio.png "Engine") 
 
 ---
 <!-- 
