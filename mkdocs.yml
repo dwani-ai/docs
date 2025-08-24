@@ -11,5 +11,3 @@ exclude_docs: |
   node_modules/
   *.git
   venv
-nav:
-  - Home: README.md
