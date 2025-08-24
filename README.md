@@ -1,10 +1,10 @@
-# deploy - dwani.ai - Document Analytics Platform
+# dwani.ai - Discovery
 
-dwani.ai is a Document Analytics Platform
+- Secure AI document analytics for Proprietary Data
 
-- Live Demo - [https://demo.dwani.ai](https://demo.dwani.ai)
+- Live - [https://app.dwani.ai](https://app.dwani.ai)
 
-- Designed for Indian + European languages. 
+<!-- 
 - It can be self-hosted and provides multimodal inference, supporting
     - text
     - images 
@@ -33,24 +33,36 @@ dwani.ai is a Document Analytics Platform
 - Load balancing and API orchestration
 
 ---
+-->
 
-## Component Setup
+---
+
+![dwani API](../images/dwani-inference.drawio.png "Engine") 
+
+---
+
+## Component Setup - For Discovery
 
 Each service is modular and can be set up independently. See linked docs for detailed instructions.
 
 | Component        | Description                                  | Setup Guide                                      |
 |------------------|----------------------------------------------|--------------------------------------------------|
-| **vllm server**  | Text + image inference                       | [docs/v2/README.md](docs/v2/README.md) |
+| **vllm server**  | Text + image inference                       | [docs/vllm_deploy.md](docs/vllm_deploy.md) |
+| **api-server**   | API gateway & Swagger setup                  | [api_server_setup.md](docs/api_server_setup.md)   |
+| **proxy-server** | Load balancer                                | [proxy_setup_vm.md](docs/proxy_setup_vm.md)       |
+
+## Component Setup - For Multimodal Inferece
+
+Each service is modular and can be set up independently. See linked docs for detailed instructions.
+
+| Component        | Description                                  | Setup Guide                                      |
+|------------------|----------------------------------------------|--------------------------------------------------|
 | **docs-api-server** | Document extraction, translation, query   | [docs_setup.md](docs/docs_setup.md)              |
 | **translate_server** | Indian language translation              | [translate_server.md](docs/translate_server.md)   |
 | **tts-server**   | Text to speech (Indian languages)            | [tts-server.md](docs/tts-server.md)              |
 | **asr-server**   | Automatic Speech Recognition                 | [asr_server.md](docs/asr_server.md)              |
-| **api-server**   | API gateway & Swagger setup                  | [api_server_setup.md](docs/api_server_setup.md)   |
-| **proxy-server** | Load balancer                                | [proxy_setup_vm.md](docs/proxy_setup_vm.md)       |
 
 ---
-
-![dwani API](images/dwani-inference.drawio.png "Engine") 
 
 ---
 <!-- 

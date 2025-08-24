@@ -1,7 +1,5 @@
 ### Discovery
 
-
-
 - For server
 ```bash
 sudo apt-get update
