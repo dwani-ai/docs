@@ -5,6 +5,9 @@ output.wav
 src/ollama
 pyautogenvenv/
 venv/
+.idea
+venv
+site
 venv_2
 # Byte-compiled / optimized / DLL files
 __pycache__/

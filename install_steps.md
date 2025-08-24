@@ -1,7 +1,7 @@
 sudo apt update
 sudo apt upgrade -y
 
-sudo apt install python3.12 python3.12-venv python3.12-dev -y
+sudo apt install python3.12 python3.12-venv python3.12-dev poppler-utils -y
 
 
 python3.12 -m venv venv
@@ -14,4 +14,4 @@ pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v.0.0.4/vll
 
 
 
-vllm serve RedHatAI/gemma-3-27b-it-FP8-dynamic --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.4 --tensor-parallel-size 1 --max-model-len 65536    --disable-log-requests
+vllm serve RedHatAI/gemma-3-27b-it-FP8-dynamic --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.9 --tensor-parallel-size 1 --max-model-len 65536    --disable-log-requests
