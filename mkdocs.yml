@@ -2,10 +2,8 @@ site_name: dwani.ai
 site_url: https://docs.dwani.ai
 theme:
   name: material
-docs_dir: .
 site_dir: site
-plugins:
-  - same-dir
+
 exclude_docs: |
   *.py
   node_modules/

@@ -47,9 +47,9 @@ Each service is modular and can be set up independently. See linked docs for det
 
 | Component        | Description                                  | Setup Guide                                      |
 |------------------|----------------------------------------------|--------------------------------------------------|
-| **vllm server**  | Text + image inference                       | [docs/vllm_deploy.md](docs/vllm_deploy.md) |
-| **api-server**   | API gateway & Swagger setup                  | [api_server_setup.md](docs/api_server_setup.md)   |
-| **proxy-server** | Load balancer                                | [proxy_setup_vm.md](docs/proxy_setup_vm.md)       |
+| **vllm server**  | Text + image inference                       | [vllm_deploy.md](vllm_deploy.md) |
+| **api-server**   | API gateway & Swagger setup                  | [api_server_setup.md](api_server_setup.md)   |
+| **proxy-server** | Load balancer                                | [proxy_setup_vm.md](proxy_setup_vm.md)       |
 
 ## Component Setup - For Multimodal Inferece
 
@@ -57,10 +57,10 @@ Each service is modular and can be set up independently. See linked docs for det
 
 | Component        | Description                                  | Setup Guide                                      |
 |------------------|----------------------------------------------|--------------------------------------------------|
-| **docs-api-server** | Document extraction, translation, query   | [docs_setup.md](docs/docs_setup.md)              |
-| **translate_server** | Indian language translation              | [translate_server.md](docs/translate_server.md)   |
-| **tts-server**   | Text to speech (Indian languages)            | [tts-server.md](docs/tts-server.md)              |
-| **asr-server**   | Automatic Speech Recognition                 | [asr_server.md](docs/asr_server.md)              |
+| **docs-api-server** | Document extraction, translation, query   | [docs_setup.md](docs_setup.md)              |
+| **translate_server** | Indian language translation              | [translate_server.md](translate_server.md)   |
+| **tts-server**   | Text to speech (Indian languages)            | [tts-server.md](tts-server.md)              |
+| **asr-server**   | Automatic Speech Recognition                 | [asr_server.md](asr_server.md)              |
 
 ---
 
