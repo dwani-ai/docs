@@ -1,107 +1,85 @@
-# dwani.ai - Discovery
-
-- Secure AI document analytics for Proprietary Data
-
-- Live - [https://app.dwani.ai](https://app.dwani.ai)
-
-<!-- 
-- It can be self-hosted and provides multimodal inference, supporting
-    - text
-    - images 
-    - documents
-    - speech
-
+---
+title: Dwani.ai - Secure AI Document Analytics for Proprietary Data
+description: Discover Dwani.ai, a platform for secure AI-powered document analytics, text and image inference, Indian language translation, and speech processing.
+icon: material/brain
 ---
 
-## Table of Contents
+# Dwani.ai - Discovery
 
-- [Overview](#overview)
-- [Component Setup](#component-setup)
-- [Model Dependencies](#model-dependencies)
-- [Contributing](#contributing)
-- [License](#license)
+**Dwani.ai** provides secure AI document analytics tailored for proprietary data, enabling advanced text and image inference, document processing, and multilingual speech capabilities for Indian languages.
+
+[Try it now at app.dwani.ai](https://app.dwani.ai){ .md-button .md-button--primary }
 
 ---
 
 ## Overview
 
-**dwani.ai** enables:
-- Text and image inference
-- Document extraction, translation, and querying
-- Speech-to-text (ASR) and text-to-speech (TTS) for Indian languages
-- Translation across major Indian languages
-- Load balancing and API orchestration
+Dwani.ai empowers users with the following features:
 
----
--->
-
----
-
-![dwani API](../images/dwani-inference.drawio.png "Engine") 
+- **Text and Image Inference**: Process and analyze text and images with state-of-the-art models.
+- **Document Processing**: Extract, translate, and query documents efficiently.
+- **Speech Processing**: Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) for Indian languages.
+- **Translation**: Seamless translation across major Indian languages.
+- **Scalability**: Load balancing and API orchestration for robust performance.
 
 ---
 
-## Component Setup - For Discovery
+## System Architecture
 
-Each service is modular and can be set up independently. See linked docs for detailed instructions.
+The Dwani.ai engine is designed for modularity and scalability. Below is a high-level overview of the inference pipeline:
 
-| Component        | Description                                  | Setup Guide                                      |
-|------------------|----------------------------------------------|--------------------------------------------------|
-| **vllm server**  | Text + image inference                       | [vllm_deploy.md](vllm_deploy.md) |
-| **api-server**   | API gateway & Swagger setup                  | [api_server_setup.md](api_server_setup.md)   |
-| **proxy-server** | Load balancer                                | [proxy_setup_vm.md](proxy_setup_vm.md)       |
-
-## Component Setup - For Multimodal Inferece
-
-Each service is modular and can be set up independently. See linked docs for detailed instructions.
-
-| Component        | Description                                  | Setup Guide                                      |
-|------------------|----------------------------------------------|--------------------------------------------------|
-| **docs-api-server** | Document extraction, translation, query   | [docs_setup.md](docs_setup.md)              |
-| **translate_server** | Indian language translation              | [translate_server.md](translate_server.md)   |
-| **tts-server**   | Text to speech (Indian languages)            | [tts-server.md](tts-server.md)              |
-| **asr-server**   | Automatic Speech Recognition                 | [asr_server.md](asr_server.md)              |
+![dwani.ai Inference Engine](../images/dwani-inference.drawio.png){ align=center }
 
 ---
 
+## Component Setup - Discovery
+
+Each component is modular and can be set up independently. Refer to the linked guides for detailed setup instructions.
+
+| Component         | Description                          | Setup Guide                                      |
+|-------------------|--------------------------------------|--------------------------------------------------|
+| **vLLM Server**   | Text and image inference             | [vLLM Deployment](vllm_deploy.md)                |
+| **API Server**    | API gateway & Swagger setup          | [API Server Setup](api_server_setup.md)          |
+| **Proxy Server**  | Load balancer                        | [Proxy Server Setup](proxy_setup_vm.md)          |
+
 ---
-<!-- 
-- build vllm for arm64 / GH200/GB200
-  - [docs/v2/README.md](docs/v2/README.md)
 
-- deployment is optimised for arm64, VRAM > 80GB 
+## Component Setup - Multimodal Inference
 
-- vllm 
-  - python wheel installation
-    - 3.10
-      - pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v0.0.5/vllm-0.10.1.dev0+g6d8d0a24c.d20250726-cp310-cp310-linux_aarch64.whl
-    - 3.12
-      - pip install https://github.com/dwani-ai/vllm-arm64/releases/download/v.0.0.4/vllm-0.10.1.dev0+g6d8d0a24c.d20250726-cp312-cp312-linux_aarch64.whl
-  - docker images
-    - dwani/vllm-openai:latest
-    -   sudo docker run --gpus all -p 8000:8000 vllm/vllm-openai --model Qwen/Qwen3-0.6B --port 8000
--->
---- 
+For multimodal inference, the following components are available. Each is independently configurable.
+
+| Component            | Description                              | Setup Guide                                      |
+|----------------------|------------------------------------------|--------------------------------------------------|
+| **Docs API Server**  | Document extraction, translation, query  | [Docs API Setup](multimodal/docs_setup.md)       |
+| **Translate Server** | Indian language translation              | [Translate Server](multimodal/translate_server.md) |
+| **TTS Server**       | Text-to-Speech (Indian languages)        | [TTS Server](multimodal/tts-server.md)           |
+| **ASR Server**       | Automatic Speech Recognition             | [ASR Server](multimodal/asr_server.md)           |
+
+---
 
 ## Model Dependencies
 
-The following models are required for full functionality:
+The following models power Dwani.ai's functionality:
 
-| Task                                     | Models Used                                     |
-|-------------------------------------------|-------------------------------------------------|
-| **Text + Vision**                        | `google/gemma-3-27b-it`, `google/gemma-3-12b-it`, `google/gemma-3-4b-it` |
-| **Text**                                 | `Qwen/Qwen3-32B`, `Qwen/Qwen3-14B`              |
-| **Vision**                               | `vikhyatk/moondream2`                           |
-| **Speech Synthesis / Text to Speech**     | `ai4bharat/IndicF5`, `onnx-community/Kokoro-82M-v1.0-ONNX` |
-| **Translation**                          | `ai4bharat/IndicTrans3-beta`, `ai4bharat/indictrans2-indic-indic-1B`, `ai4bharat/indictrans2-en-indic-1B`, `ai4bharat/indictrans2-indic-en-1B` |
-| **Automatic Speech Recognition / ASR**    | `ai4bharat/indic-conformer-600m-multilingual`, `Systran/faster-whisper-large-v3` |
-| **Text Analysis**                        | `ai4bharat/Cadence`                             |
+| Task                          | Models Used                                                                 |
+|-------------------------------|-----------------------------------------------------------------------------|
+| **Text + Vision**             | `google/gemma-3-27b-it`, `google/gemma-3-12b-it`, `google/gemma-3-4b-it`   |
+| **Text**                      | `Qwen/Qwen3-32B`, `Qwen/Qwen3-14B`                                        |
+| **Vision**                    | `vikhyatk/moondream2`                                                     |
+| **Speech Synthesis (TTS)**    | `ai4bharat/IndicF5`, `onnx-community/Kokoro-82M-v1.0-ONNX`                |
+| **Translation**               | `ai4bharat/IndicTrans3-beta`, `ai4bharat/indictrans2-indic-indic-1B`, etc. |
+| **Automatic Speech Recognition (ASR)** | `ai4bharat/indic-conformer-600m-multilingual`, `Systran/faster-whisper-large-v3` |
+| **Text Analysis**             | `ai4bharat/Cadence`                                                       |
 
 ---
 
+
+
 ## Contributing
 
-Contributions are welcome! Please open issues or submit pull requests for improvements.
+We welcome contributions! Please open issues or submit pull requests to improve dwani.ai.
+
+[Contribute on GitHub](https://github.com/dwani-ai){ .md-button }
 
 ---
 
@@ -110,3 +88,5 @@ Contributions are welcome! Please open issues or submit pull requests for improv
 This project is licensed under the [MIT License](LICENSE).
 
 ---
+
+*Built with ❤️ by the dwani.ai team*
