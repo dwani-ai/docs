@@ -1,13 +1,36 @@
 site_name: dwani.ai
 site_url: https://docs.dwani.ai
 theme:
+  logo: images/dwani-logo.png
+  favicon: images/dwani-favicon.ico
   name: material
-docs_dir: .
+  features:
+    - content.code.copy
+    - content.tabs
+    - content.action
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed
+  - attr_list
+  - md_in_html
 site_dir: site
 plugins:
-  - same-dir
+  - search
 exclude_docs: |
   *.py
   node_modules/
   *.git
   venv
+
+nav:
+  - Home: index.md
+  - Discovery Setup:
+      - vLLM Server: vllm_deploy.md
+      - API Server: api_server_setup.md
+      - Proxy Server: proxy_setup_vm.md
+  - Multimodal Inference:
+      - Docs API: multimodal/docs_setup.md
+      - Translate Server: multimodal/translate_server.md
+      - TTS Server: multimodal/tts-server.md
+      - ASR Server: multimodal/asr_server.md
