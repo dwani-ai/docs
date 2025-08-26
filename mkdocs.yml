@@ -29,8 +29,15 @@ nav:
       - vLLM Server: vllm_deploy.md
       - API Server: api_server_setup.md
       - Proxy Server: proxy_setup_vm.md
+      - Discovery Server : discovery_setup.md
   - Multimodal Inference:
       - Docs API: multimodal/docs_setup.md
       - Translate Server: multimodal/translate_server.md
       - TTS Server: multimodal/tts-server.md
       - ASR Server: multimodal/asr_server.md
+  - Arm64:
+      - vLLM docker build : arm64/vllm_docker_build.md
+      - xfomers : arm64/xfomers.md 
+      - flashinfer : arm64/flashinfer.md
+  - local:
+      - llama.cpp : local/llama-cpp.md
