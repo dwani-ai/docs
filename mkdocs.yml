@@ -1,6 +1,8 @@
 site_name: dwani.ai
 site_url: https://docs.dwani.ai
 theme:
+  logo: images/dwani-logo.png
+  favicon: images/dwani-favicon.ico
   name: material
   features:
     - content.code.copy

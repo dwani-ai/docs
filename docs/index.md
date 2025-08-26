@@ -1,12 +1,12 @@
 ---
-title: Dwani.ai - Secure AI Document Analytics for Proprietary Data
-description: Discover Dwani.ai, a platform for secure AI-powered document analytics, text and image inference, Indian language translation, and speech processing.
+title: dwani.ai - Discovery-  Secure AI Document Analytics for Proprietary Data
+description: Discover dwani.ai, a platform for secure AI-powered document analytics, text and image inference, Indian language translation, and speech processing.
 icon: material/brain
 ---
 
-# Dwani.ai - Discovery
+# dwani.ai - Discovery
 
-**Dwani.ai** provides secure AI document analytics tailored for proprietary data, enabling advanced text and image inference, document processing, and multilingual speech capabilities for Indian languages.
+**dwani.ai** provides secure AI document analytics tailored for proprietary data, enabling advanced text and image inference, document processing, and multilingual speech capabilities for Indian languages.
 
 [Try it now at app.dwani.ai](https://app.dwani.ai){ .md-button .md-button--primary }
 
@@ -14,7 +14,7 @@ icon: material/brain
 
 ## Overview
 
-Dwani.ai empowers users with the following features:
+dwani.ai empowers users with the following features:
 
 - **Text and Image Inference**: Process and analyze text and images with state-of-the-art models.
 - **Document Processing**: Extract, translate, and query documents efficiently.
@@ -26,7 +26,7 @@ Dwani.ai empowers users with the following features:
 
 ## System Architecture
 
-The Dwani.ai engine is designed for modularity and scalability. Below is a high-level overview of the inference pipeline:
+The dwani.ai engine is designed for modularity and scalability. Below is a high-level overview of the inference pipeline:
 
 ![dwani.ai Inference Engine](../images/dwani-inference.drawio.png){ align=center }
 
