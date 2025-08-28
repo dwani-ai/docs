@@ -37,9 +37,13 @@ nav:
       - TTS Server: multimodal/tts-server.md
       - ASR Server: multimodal/asr_server.md
   - Arm64:
+      - readme : arm64/README.md
       - vLLM wheel : arm64/vllm-setup.md
       - vLLM docker build : arm64/vllm_docker_build.md
       - xfomers : arm64/xfomers.md 
       - flashinfer : arm64/flashinfer.md
+      - torch: arm64/torch_2_8.md
   - local:
       - llama.cpp : local/llama-cpp.md
+  - cuda :
+      - cuda driver : cuda/cuda_12_9-setup.md
