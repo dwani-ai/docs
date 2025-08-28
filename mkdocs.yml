@@ -25,11 +25,12 @@ exclude_docs: |
 
 nav:
   - Home: index.md
+  - Python SDK: python-sdk.md
   - Discovery Setup:
-      - vLLM Server: vllm_deploy.md
-      - API Server: api_server_setup.md
-      - Proxy Server: proxy_setup_vm.md
-      - Discovery Server : discovery_setup.md
+      - vLLM Server: discovery/vllm_deploy.md
+      - API Server: discovery/api_server_setup.md
+      - Proxy Server: discovery/proxy_setup_vm.md
+      - Discovery Server : discovery/discovery_setup.md
   - Multimodal Inference:
       - Docs API: multimodal/docs_setup.md
       - Translate Server: multimodal/translate_server.md
