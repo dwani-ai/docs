@@ -1,9 +1,17 @@
 Vllm - Docker Build
 
-- https://hub.docker.com/r/dwani/vllm-arm64 
-- docker pull dwani/vllm-arm64:latest
+- Docker Images 
+  - https://hub.docker.com/r/dwani/vllm-arm64 
+  - docker pull dwani/vllm-arm64:latest
 
-python3 use_existing_torch.py
+
+- Create vLLM arm64 - Docker Image
+```bash
+
+git clone https://github.com/vllm-project/vllm.git
+
+cd vllm
+
 DOCKER_BUILDKIT=1 sudo docker build . \
 --file docker/Dockerfile \
 --target vllm-openai \
@@ -13,6 +21,8 @@ DOCKER_BUILDKIT=1 sudo docker build . \
 --build-arg nvcc_threads=4 \
 --build-arg VLLM_MAX_SIZE_MB=1000 \
 --build-arg torch_cuda_arch_list=""
+
+
 
 sudo docker tag vllm/vllm-openai:latest dwani/vllm-arm64:latest
 

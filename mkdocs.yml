@@ -36,6 +36,7 @@ nav:
       - TTS Server: multimodal/tts-server.md
       - ASR Server: multimodal/asr_server.md
   - Arm64:
+      - vLLM wheel : arm64/vllm-setup.md
       - vLLM docker build : arm64/vllm_docker_build.md
       - xfomers : arm64/xfomers.md 
       - flashinfer : arm64/flashinfer.md
