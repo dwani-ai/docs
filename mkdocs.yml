@@ -47,3 +47,6 @@ nav:
       - llama.cpp : local/llama-cpp.md
   - cuda :
       - cuda driver : cuda/cuda_12_9-setup.md
+      - cuda docker : cuda/cuda_docker.md
+  - todo:
+      - arm64 upgrade : todo/todo_arm_64_arm64-gpu-tools.md
