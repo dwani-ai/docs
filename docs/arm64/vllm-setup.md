@@ -1,6 +1,6 @@
 vLLM for arm64 
  
-- Create vllm library 
+- Create vllm library wheel
 ```bash
 
 sudo apt-get install build-essential libnuma-dev -y
@@ -38,8 +38,3 @@ python setup.py bdist_wheel
 pip install dist/*.whl
 ```
 
-
-- Reference
-  - For GH200, GB200 Nvidia GPU
-  - Python - vllm arm64 wheel on GitHub 
-    - 

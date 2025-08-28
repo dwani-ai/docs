@@ -6,7 +6,8 @@ icon: material/brain
 
 # dwani.ai - Discovery
 
-**dwani.ai** provides secure AI document analytics tailored for proprietary data, enabling advanced text and image inference, document processing, and multilingual speech capabilities for Indian languages.
+**dwani.ai** provides secure AI document analytics tailored for proprietary data.
+
 
 [Try it now at app.dwani.ai](https://app.dwani.ai){ .md-button .md-button--primary }
 
@@ -18,8 +19,8 @@ dwani.ai empowers users with the following features:
 
 - **Text and Image Inference**: Process and analyze text and images with state-of-the-art models.
 - **Document Processing**: Extract, translate, and query documents efficiently.
-- **Speech Processing**: Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) for Indian languages.
-- **Translation**: Seamless translation across major Indian languages.
+- **Speech Processing**: Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) for Indian + European languages.
+- **Translation**: Seamless translation across major Indian + European languages.
 - **Scalability**: Load balancing and API orchestration for robust performance.
 
 ---
@@ -40,6 +41,7 @@ Each component is modular and can be set up independently. Refer to the linked g
 |-------------------|--------------------------------------|--------------------------------------------------|
 | **vLLM Server**   | Text and image inference             | [vLLM Deployment](vllm_deploy.md)                |
 | **API Server**    | API gateway & Swagger setup          | [API Server Setup](api_server_setup.md)          |
+| **Discovery Server**    | Discovery Server          | [Discovery Setup](discovery_setup.md)          |
 | **Proxy Server**  | Load balancer                        | [Proxy Server Setup](proxy_setup_vm.md)          |
 
 ---
