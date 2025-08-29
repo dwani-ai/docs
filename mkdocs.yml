@@ -41,12 +41,14 @@ use_directory_urls: false
 nav:
   - Home: index.md
   - Python SDK: python-sdk.md
-  - Discovery Setup:
+  - Discovery:
+      - readme : discovery/index.md
       - vLLM Server: discovery/vllm_deploy.md
       - API Server: discovery/api_server_setup.md
       - Proxy Server: discovery/proxy_setup_vm.md
       - Discovery Server : discovery/discovery_setup.md
   - Multimodal Inference:
+      - readme : multimodal/index.md
       - Docs API: multimodal/docs_setup.md
       - Translate Server: multimodal/translate_server.md
       - TTS Server: multimodal/tts-server.md
@@ -59,11 +61,15 @@ nav:
       - flashinfer : arm64/flashinfer.md
       - torch: arm64/torch_2_8.md
   - local:
+      - readme : local/index.md
       - llama.cpp : local/llama-cpp.md
+      - moondream : local/moondream.md
   - cuda :
+      - readme : cuda/index.md
       - cuda driver : cuda/cuda_12_9-setup.md
       - cuda docker : cuda/cuda_docker.md
   - mobile :
+      - readme : mobile/index.md
       - android : mobile/android-app.md
   - todo:
       - arm64 upgrade : todo/todo_arm_64_arm64-gpu-tools.md
