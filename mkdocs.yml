@@ -1,10 +1,25 @@
 site_name: dwani.ai
 site_url: https://docs.dwani.ai
+repo_url: https://github.com/dwani-ai/docs
 theme:
   logo: images/dwani-logo.png
   favicon: images/dwani-favicon.ico
   name: material
   features:
+    - content.action.edit
+    - content.code.copy
+    - content.tabs.link
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.follow
     - content.code.copy
     - content.tabs
     - content.action
@@ -22,7 +37,7 @@ exclude_docs: |
   node_modules/
   *.git
   venv
-
+use_directory_urls: false
 nav:
   - Home: index.md
   - Python SDK: python-sdk.md
@@ -37,9 +52,18 @@ nav:
       - TTS Server: multimodal/tts-server.md
       - ASR Server: multimodal/asr_server.md
   - Arm64:
+      - readme : arm64/README.md
       - vLLM wheel : arm64/vllm-setup.md
       - vLLM docker build : arm64/vllm_docker_build.md
       - xfomers : arm64/xfomers.md 
       - flashinfer : arm64/flashinfer.md
+      - torch: arm64/torch_2_8.md
   - local:
       - llama.cpp : local/llama-cpp.md
+  - cuda :
+      - cuda driver : cuda/cuda_12_9-setup.md
+      - cuda docker : cuda/cuda_docker.md
+  - mobile :
+      - android : mobile/android-app.md
+  - todo:
+      - arm64 upgrade : todo/todo_arm_64_arm64-gpu-tools.md

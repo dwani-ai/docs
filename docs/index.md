@@ -39,10 +39,10 @@ Each component is modular and can be set up independently. Refer to the linked g
 
 | Component         | Description                          | Setup Guide                                      |
 |-------------------|--------------------------------------|--------------------------------------------------|
-| **vLLM Server**   | Text and image inference             | [vLLM Deployment](vllm_deploy.md)                |
-| **API Server**    | API gateway & Swagger setup          | [API Server Setup](api_server_setup.md)          |
-| **Discovery Server**    | Discovery Server          | [Discovery Setup](discovery_setup.md)          |
-| **Proxy Server**  | Load balancer                        | [Proxy Server Setup](proxy_setup_vm.md)          |
+| **vLLM Server**   | Text and image inference             | [vLLM Deployment](discovery/vllm_deploy.md)                |
+| **API Server**    | API gateway & Swagger setup          | [API Server Setup](discovery/api_server_setup.md)          |
+| **Discovery Server**    | Discovery Server          | [Discovery Setup](discovery/discovery_setup.md)          |
+| **Proxy Server**  | Load balancer                        | [Proxy Server Setup](discovery/proxy_setup_vm.md)          |
 
 ---
 
