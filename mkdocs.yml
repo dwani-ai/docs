@@ -1,10 +1,25 @@
 site_name: dwani.ai
 site_url: https://docs.dwani.ai
+repo_url: https://github.com/dwani-ai/docs
 theme:
   logo: images/dwani-logo.png
   favicon: images/dwani-favicon.ico
   name: material
   features:
+    - content.action.edit
+    - content.code.copy
+    - content.tabs.link
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.follow
     - content.code.copy
     - content.tabs
     - content.action
@@ -22,7 +37,7 @@ exclude_docs: |
   node_modules/
   *.git
   venv
-
+use_directory_urls: false
 nav:
   - Home: index.md
   - Python SDK: python-sdk.md
