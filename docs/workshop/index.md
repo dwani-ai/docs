@@ -1,5 +1,7 @@
 ## Workshop steps
 
+- Live Website : [https://workshop.dwani.ai](https://workshop.dwani.ai)
+
 ### For Development 
 - **Prerequisites**: Python 3.10
 - **Steps**:
@@ -16,10 +18,15 @@
   venv\Scripts\activate
   ```
   3. **Install dependencies**:
-  - ```bash
-    pip install -r requirements.txt
-    ```
-  4. **Run the Program**:
+  ```bash
+  pip install -r requirements.txt
+  ```
+  4. **Setup Credentials**:
+  ```bash
+  export DWANI_API_BASE_URL=<dwnai-ip>
+  export DWANI_API_KEY=<dwani_key>
+  ```
+  5. **Run the Program**:
   - ```bash
     python workshop_demo.py
     ```
@@ -48,6 +55,7 @@
 
 
 <!-- 
+docker run -p 80:80 --env DWANI_API_KEY=<your__key> --env DWANI_API_BASE_URL="https://api.dwani.ai"  --env GPT_OSS_API_URL=11 --env GEMMA_VLLM_IP=11 dwani/workshop:latest
 
 nohup python src/server/main.py --port 7860 > server.log 2>&1 &
 
