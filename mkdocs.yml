@@ -39,21 +39,23 @@ exclude_docs: |
   venv
 use_directory_urls: false
 nav:
-  - Home: index.md
-  - Python SDK: python-sdk.md
-  - Discovery:
+  - home: index.md
+  - python SDK: python-sdk.md
+  - discovery:
       - readme : discovery/index.md
       - vLLM Server: discovery/vllm_deploy.md
       - API Server: discovery/api_server_setup.md
       - Proxy Server: discovery/proxy_setup_vm.md
       - Discovery Server : discovery/discovery_setup.md
-  - Multimodal Inference:
+  - multimodal :
       - readme : multimodal/index.md
       - Docs API: multimodal/docs_setup.md
       - Translate Server: multimodal/translate_server.md
       - TTS Server: multimodal/tts-server.md
       - ASR Server: multimodal/asr_server.md
-  - Arm64:
+  - workshop:
+      - readme : workshop/index.md
+  - arm64:
       - readme : arm64/README.md
       - vLLM wheel : arm64/vllm-setup.md
       - vLLM docker build : arm64/vllm_docker_build.md
