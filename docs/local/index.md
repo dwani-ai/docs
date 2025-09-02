@@ -1,12 +1,14 @@
 Discovery Lite
 
-discovery-lite
+- Install [llama.cpp](llama-cpp.md)
 
-runs on any PC , with/without GPU
-- gpt-oss-20b - LLM
-- moondream - VLM
-- whisper - ASR
-- kokoro - TTS
-- gemma3-270M  - fine-tuning
+- Setup [moondream](moondream.md) for VLM
 
-- llama.cpp
+
+- TODO
+    - gpt-oss-20b - LLM
+    - moondream - VLM
+    - whisper - ASR
+    - kokoro - TTS
+    - gemma3-270M  - fine-tuning
+
