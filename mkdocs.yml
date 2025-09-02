@@ -55,6 +55,8 @@ nav:
       - ASR Server: multimodal/asr_server.md
   - workshop:
       - readme : workshop/index.md
+  - examples:
+      - readme : examples/index.md
   - misc:
     - readme : misc/index.md
     - arm64:
