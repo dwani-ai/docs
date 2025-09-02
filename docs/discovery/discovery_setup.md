@@ -14,7 +14,7 @@ source venv/bin/activate
 
 pip install -r server-requirements.txt
 
-export VLLM_IP=<vllm-server-ip>
+export VLLM_IP="0.0.0.0"
 uvicorn server.main:app --host 0.0.0.0 --port 18889
 
 ```

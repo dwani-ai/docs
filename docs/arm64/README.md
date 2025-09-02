@@ -5,8 +5,12 @@ Setup vllm for arm64
 - Create vllm-docker - [vllm_docker_build.md](vllm_docker_build.md)
 
 
-
 - Open Items
+    - flash-infer
+    - xformers
+
+
+<!-- 
   - Reduce vLLM wheel size build 
     - < 100 MB for pypi  
         - Issue 
@@ -17,5 +21,5 @@ Setup vllm for arm64
             - https://github.com/vllm-project/vllm/blob/main/.buildkite/check-wheel-size.py
         - Temporary Fix : build-arg VLLM_MAX_SIZE_MB=1000 
 
- - flash-infer
- - xformers
+
+ -->
