@@ -1,27 +1,15 @@
 # dwani.ai - python library
 
-- dwani.ai is self-hosted GenAI platform for multimodal AI inference.
-
-- Image, Speech, Docs, Text supported today !!
-
-- dwani.ai - is now compatible with OpenAI Spec
-
 ### Install the library
 ```bash
 pip install --upgrade dwani
 ```
 
-### Model Supported
-- Text
-  - gpt-oss , gemma3
-- Vision
-  - gemma3
-
 ### Languages supported
-- Indian
-  - Assamese, Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi Odia, Punjabi, Tamil, Telugu
-- European
-  - English, German
+  - Indian
+    - Assamese, Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi Odia, Punjabi, Tamil, Telugu
+  - European
+    - English, German
 
 ### Setup the credentials
 ```python
@@ -32,7 +20,6 @@ dwani.api_key = os.getenv("DWANI_API_KEY")
 
 dwani.api_base = os.getenv("DWANI_API_BASE_URL")
 ```
-
 
 ---
 
@@ -126,31 +113,3 @@ print(result)
 ```json
 {'pages': [{'processed_page': 1, 'page_content': ' a plain text representation of the document', 'translated_content': 'ಡಾಕ್ಯುಮೆಂಟ್ನ ಸರಳ ಪಠ್ಯ ಪ್ರಾತಿನಿಧ್ಯವನ್ನು ಇಲ್ಲಿ ನೀಡಲಾಗಿದೆ, ಅದನ್ನು ಸ್ವಾಭಾವಿಕವಾಗಿ ಓದುವಂತೆಃ'}]}
 ```
-
-- Website -> [dwani.ai](https://dwani.ai)
-
-
-<!-- 
-## local development
-pip install -e .
-
-
-pip install twine build
-rm -rf dist/
-python -m build
-
-python -m twine upload dist/*
-
--->
-
-<!--
-Without Batch  
-2025-07-14 13:39:50,330 - dwani_api - INFO - Request to /indic-summarize-pdf-all took 245.381 seconds
-INFO:dwani_api:Request to /indic-summarize-pdf-all took 245.381 seconds
-
-With Batch
-
-vllm serve google/gemma-3-4b-it --served-model-name gemma3 --host 0.0.0.0 --port 9000 --gpu-memory-utilization 0.8 --tensor-parallel-size 1 --max-model-len 65536     --dtype bfloat16 
-
-
--->
