@@ -1,29 +1,24 @@
-## dwani.ai - Desktop
+# Dwani.ai - Desktop
 
-Use dwani.ai on your PC as offline-application
+Use Dwani.ai on your PC with our dedicated desktop application. 
 
-- Download the APP
+## Download the App
 
-- [Linux](https://github.com/dwani-ai/dwani-desktop/releases/download/v0.0.2/dwani-desktop-0.0.2.AppImage)
+- **Linux**: [Download Dwani Desktop for Linux](https://github.com/dwani-ai/dwani-desktop/releases/download/v0.0.2/dwani-desktop-0.0.2.AppImage)
+- **Windows**: [Download Dwani Desktop for Windows](https://github.com/dwani-ai/dwani-desktop/releases/download/v0.0.2/dwani-desktop.Setup.0.0.2.exe)
 
-- [Windows](https://github.com/dwani-ai/dwani-desktop/releases/download/v0.0.2/dwani-desktop.Setup.0.0.2.exe)
+## Installation Instructions
 
+### For Windows
+  -  [Windows Installation Guide](windows_installation.md).
 
-- Build the Application
-```bash
-cd frontend
-npx electron-builder --win --linux
-```
+### For Linux
+  - [Linux Installation Guide](linux_installation.md).
 
-
-- Run Application
-  - linux
-```bash
-./dwani-desktop-0.0.1.AppImage
-```
-
+<!-- 
+- For Local Server 
 ---
-
+```bash
 ./build/bin/llama-server -hf ggml-org/gemma-3-4b-it-GGUF --host 0.0.0.0 --port 18888 --n-gpu-layers 99 --ctx-size 8192 --alias gemma3
 
 
@@ -43,6 +38,7 @@ pip install -r server-requirements.txt
 
 export VLLM_IP="0.0.0.0"
 uvicorn server.main:app --host 0.0.0.0 --port 18889
---
+```
 
+-->
 

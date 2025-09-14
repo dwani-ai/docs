@@ -43,6 +43,7 @@ nav:
   - python SDK: python-sdk.md
   - discovery:
       - readme : discovery/index.md
+      - desktop : discovery/desktop.md
       - vLLM Server: discovery/vllm_deploy.md
       - API Server: discovery/api_server_setup.md
       - Proxy Server: discovery/proxy_setup_vm.md
