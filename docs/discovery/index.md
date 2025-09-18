@@ -1,4 +1,6 @@
 
+- Discovery Desktop 
+    - [desktop.md](desktop.md)
 - For Inference use vLLM or llama.cpp 
     - For Server 
         - [vllm_deploy.md](vllm_deploy.md)

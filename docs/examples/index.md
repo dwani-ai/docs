@@ -1,14 +1,16 @@
 Projects built with dwani.ai
 
 - Legal Aliens - XR game - [https://github.com/sachinsshetty/xr_dwani](https://github.com/sachinsshetty/xr_dwani)
-    - Puzzle generation
-    - Object Detection + Bounding Box
+    - [Video Demo](https://www.youtube.com/watch?v=ciHfY5JAGCk)
+        - Puzzle generation
+        - Object Detection + Bounding Box
 
 - Smart City - [https://github.com/sachinsshetty/smart_city_hackathon](https://github.com/sachinsshetty/smart_city_hackathon)
-    - Vision Assitance with Voice Interaction
-    - Object Detection/ Image Description
-    - Automatic Speech Recognition/ ASR
-    - Speech Synthesis / Text to Speech
+    - [Video demo](https://youtu.be/mzc9N4tSgcU) 
+        - Vision Assistance with Voice Interaction
+        - Object Detection/ Image Description
+        - Automatic Speech Recognition/ ASR
+        - Speech Synthesis / Text to Speech
 
 - Biryani Bot - [https://github.com/sachinsshetty/biryani_bot](https://github.com/sachinsshetty/biryani_bot)
     
