@@ -5,10 +5,11 @@ Projects built with dwani.ai
     - Object Detection + Bounding Box
 
 - Smart City - [https://github.com/sachinsshetty/smart_city_hackathon](https://github.com/sachinsshetty/smart_city_hackathon)
-    - Vision Assitance with Voice Interaction
-    - Object Detection/ Image Description
-    - Automatic Speech Recognition/ ASR
-    - Speech Synthesis / Text to Speech
+    - [Video demo](https://youtu.be/mzc9N4tSgcU) 
+        - Vision Assistance with Voice Interaction
+        - Object Detection/ Image Description
+        - Automatic Speech Recognition/ ASR
+        - Speech Synthesis / Text to Speech
 
 - Biryani Bot - [https://github.com/sachinsshetty/biryani_bot](https://github.com/sachinsshetty/biryani_bot)
     
