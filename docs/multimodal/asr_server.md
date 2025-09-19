@@ -5,13 +5,14 @@
 git clone https://github.com/dwani-ai/asr-indic-server.git
 cd asr-indic-server
     
-python -m venv --system-site-packages venv
+python -m venv venv
 source venv/bin/activate
 
-pip install -r requirements.txt
+pip install fastapi torch torchaudio transformers uvicron pydub onnxruntime
 
 
-python src/multilingual/asr_api.py --host 0.0.0.0 --port 7863 --device cuda
+
+python src/multi-lingual/asr_api.py --host 0.0.0.0 --port 7863 --device cuda
 
 ```
 
