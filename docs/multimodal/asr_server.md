@@ -8,11 +8,11 @@ cd asr-indic-server
 python -m venv venv
 source venv/bin/activate
 
-pip install fastapi torch torchaudio transformers uvicron pydub onnxruntime
+ pip install fastapi torch torchaudio transformers uvicorn pydub onnxruntime python-multipart
 
 
 
-python src/multi-lingual/asr_api.py --host 0.0.0.0 --port 7863 --device cuda
+python src/multi-lingual/asr_api.py --port 7863  --host 0.0.0.0 --device cuda
 
 ```
 
