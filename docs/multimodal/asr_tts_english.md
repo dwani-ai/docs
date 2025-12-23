@@ -1,6 +1,7 @@
 
 ASR - English
 
+```bash
 curl --silent --remote-name https://raw.githubusercontent.com/speaches-ai/speaches/master/compose.yaml
 curl --silent --remote-name https://raw.githubusercontent.com/speaches-ai/speaches/master/compose.cuda.yaml
 export COMPOSE_FILE=compose.cuda.yaml
@@ -19,5 +20,4 @@ curl -X 'POST' \
   -H 'accept: application/json' \
   -d ''
 
-
-
+```
