@@ -1,5 +1,23 @@
 Projects built with dwani.ai
 
+- Discovery : [https://app.dwani.ai](https://app.dwani.ai)
+
+- School : AI tutor 
+    - Source - [https://github.com/sachinsshetty/agent-olympics-school](https://github.com/sachinsshetty/agent-olympics-school) 
+    - Video Demo 
+        - [Voice + Text](https://www.youtube.com/watch?v=-DrabKfl0r0)
+        - [Text](https://www.youtube.com/watch?v=zaVAEw5GJPk)
+    - [LinkedIn]()
+
+- Thunder Flash 
+    - Weapons Identification App for Civilians to report suspicious objects and Management platform for authorities for issue resolution
+    - Source - [https://github.com/sachinsshetty/thunder-flash](https://github.com/sachinsshetty/thunder-flash)
+    - video - [Demo](https://youtube.com/shorts/8qMi7JiIdeM?feature=share)
+
+- GardenAI - Garden Tools Assistant 
+    - Source - [https://github.com/sachinsshetty/xr-hack-gardenia](https://github.com/sachinsshetty/xr-hack-gardenia)
+     
+
 - Legal Aliens - XR game - [https://github.com/sachinsshetty/xr_dwani](https://github.com/sachinsshetty/xr_dwani)
     - [Video Demo](https://www.youtube.com/watch?v=ciHfY5JAGCk)
         - Puzzle generation
