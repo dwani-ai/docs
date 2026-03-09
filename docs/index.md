@@ -1,94 +1,64 @@
----
-title: dwani.ai - Discovery-  Secure AI Document Analytics for Proprietary Data
-description: Discover dwani.ai, a platform for secure AI-powered document analytics, text and image inference, Indian language translation, and speech processing.
-icon: material/brain
----
+# TALK— Conversational AI Agents for Indian languages
 
-# dwani.ai - Discovery
-
-**dwani.ai** provides secure AI document analytics tailored for proprietary data.
-
-
-[Try it now at app.dwani.ai](https://app.dwani.ai){ .md-button .md-button--primary }
+Try it: [talk.dwani.ai](https://talk.dwani.ai)
 
 ---
 
-## Overview
+## Prerequisites
 
-dwani.ai empowers users with the following features:
+- **Local:** Python 3.10+, ASR / TTS / LLM services (see [External services](#external-services)).
+- **Docker:** Docker and Docker Compose. Integrated stack needs GPU with ≥24 GB VRAM.
 
-- **Text and Image Inference**: Process and analyze text and images with state-of-the-art models.
-- **Document Processing**: Extract, translate, and query documents efficiently.
-- **Speech Processing**: Automatic Speech Recognition (ASR) and Text-to-Speech (TTS) for Indian + European languages.
-- **Translation**: Seamless translation across major Indian + European languages.
-- **Scalability**: Load balancing and API orchestration for robust performance.
+## Quick start
 
----
+| Goal | Command |
+|------|--------|
+| **Docker (host ASR/TTS/LLM)** | `cp .env.example .env` → `docker compose up -d` → http://localhost |
+| **Docker dev (build from source)** | `docker compose -f compose-dev.yml up -d --build` |
+| **Production (integrated TTS + LLM + ASR)** | `docker compose -f compose-integrated-qwen.yml up -d` |
+| **Local Python** | Set env URLs → `cd talk-server && pip install -r requirements.txt && python main.py` |
 
-## System Architecture
+## Running
 
-The dwani.ai engine is designed for modularity and scalability. Below is a high-level overview of the inference pipeline:
+**Docker (backend + UI in containers; ASR/TTS/LLM on host):**  
+Copy `.env.example` to `.env`, set `DWANI_API_BASE_URL_*` if needed (defaults use `host.docker.internal:10803/10804/10802`). Run `docker compose up -d`. Open http://localhost.
 
-![dwani.ai Inference Engine](../images/dwani-inference.drawio.png){ align=center }
+**Integrated stack (TTS + LLM + ASR in compose; ASR):**  
+> 16 GB VRAM - GPU on server
+Run `docker compose -f compose-integrated-qwen.yml up -d`. Needs GPU. Open http://localhost.
 
----
-
-## Component Setup - Discovery
-
-Each component is modular and can be set up independently. Refer to the linked guides for detailed setup instructions.
-
-| Component         | Description                          | Setup Guide                                      |
-|-------------------|--------------------------------------|--------------------------------------------------|
-| **vLLM Server**   | Text and image inference             | [vLLM Deployment](discovery/vllm_deploy.md)                |
-| **API Server**    | API gateway & Swagger setup          | [API Server Setup](discovery/api_server_setup.md)          |
-| **Discovery Server**    | Discovery Server          | [Discovery Setup](discovery/discovery_setup.md)          |
-| **Proxy Server**  | Load balancer                        | [Proxy Server Setup](discovery/proxy_setup_vm.md)          |
-
----
-
-## Component Setup - Multimodal Inference
-
-For multimodal inference, the following components are available. Each is independently configurable.
-
-| Component            | Description                              | Setup Guide                                      |
-|----------------------|------------------------------------------|--------------------------------------------------|
-| **Docs API Server**  | Document extraction, translation, query  | [Docs API Setup](multimodal/docs_setup.md)       |
-| **Translate Server** | Indian language translation              | [Translate Server](multimodal/translate_server.md) |
-| **TTS Server**       | Text-to-Speech (Indian languages)        | [TTS Server](multimodal/tts-server.md)           |
-| **ASR Server**       | Automatic Speech Recognition             | [ASR Server](multimodal/asr_server.md)           |
-
----
-
-## Model Dependencies
-
-The following models power Dwani.ai's functionality:
-
-| Task                          | Models Used                                                                 |
-|-------------------------------|-----------------------------------------------------------------------------|
-| **Text + Vision**             | `google/gemma-3-27b-it`, `google/gemma-3-12b-it`, `google/gemma-3-4b-it`   |
-| **Text**                      | `Qwen/Qwen3-32B`, `Qwen/Qwen3-14B`                                        |
-| **Vision**                    | `vikhyatk/moondream2`                                                     |
-| **Speech Synthesis (TTS)**    | `ai4bharat/IndicF5`, `onnx-community/Kokoro-82M-v1.0-ONNX`                |
-| **Translation**               | `ai4bharat/IndicTrans3-beta`, `ai4bharat/indictrans2-indic-indic-1B`, etc. |
-| **Automatic Speech Recognition (ASR)** | `ai4bharat/indic-conformer-600m-multilingual`, `Systran/faster-whisper-large-v3` |
-| **Text Analysis**             | `ai4bharat/Cadence`                                                       |
-
----
+> 6GB < 16 GB VRAM - GPU on laptop
+Run `docker compose -f compose-integrated-qwen-local.yml up -d`. Needs GPU. Open http://localhost.
 
 
+**Local Python (no UI):**  
+Export `DWANI_API_BASE_URL_ASR`, `DWANI_API_BASE_URL_TTS`, `DWANI_API_BASE_URL_LLM`. Then `cd talk-server && pip install -r requirements.txt && python main.py`. API at http://localhost:8000.
 
-## Contributing
+## Agent mode
 
-We welcome contributions! Please open issues or submit pull requests to improve dwani.ai.
+The UI can use the **LLM** or an **ADK agent** (travel planner, viva examiner, fix-my-city, orchestrator, warehouse, chess). See [agents/README.md](agents/README.md).
 
-[Contribute on GitHub](https://github.com/dwani-ai){ .md-button }
+## External services
 
----
+| Service | Port | Notes |
+|---------|------|--------|
+| **ASR** | 10803 | [asr-indic-server](https://github.com/dwani-ai/asr-indic-server) |
+| **TTS** | 10804 | [tts-indic-server](https://github.com/dwani-ai/tts-indic-server) |
+| **LLM** | 10802 | vLLM / OpenAI-compatible; [docs/llm-setup.md](docs/llm-setup.md) |
 
-## License
 
-This project is licensed under the [MIT License](LICENSE).
+## Test
 
----
+```bash
+curl -X POST 'http://localhost:8000/v1/speech_to_speech?language=kannada' \
+  -H 'Content-Type: multipart/form-data' -F 'file=@sample.wav' -o out.mp3
+```
 
-*Built with ❤️ by the dwani.ai team*
+(Use `http://localhost/v1/...` if the UI proxy is on port 80.)
+
+## Docs
+
+- [agents.md](agents.md) — Agent mode, ADK setup, and agents service.
+- [ARCHITECTURE.md](docs/ARCHITECTURE.md) — Architecture diagram, tech stack, Docker build, Chess tab.
+- [environment_variables](environment_variables.md) - Environment Variables
+- [docs/runbook.md](docs/runbook.md) — Production runbook and incident handling.
