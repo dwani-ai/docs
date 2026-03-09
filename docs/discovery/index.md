@@ -1,4 +1,6 @@
 
+- Docker Setup
+    - [docker_setup.md](docker_setup.md)
 - Discovery Desktop 
     - [desktop.md](desktop.md)
 - For Inference use vLLM or llama.cpp 

@@ -40,9 +40,16 @@ exclude_docs: |
 use_directory_urls: false
 nav:
   - home: index.md
+  - talk:
+      - readme : talk/index.md
+      - architecture : talk/architecture.md
+      - agents : talk/agents.md
+      - runbook : talk/runbook.md 
+      - environment_variables : talk/environment_variables.md
   - python SDK: python-sdk.md
   - discovery:
       - readme : discovery/index.md
+      - docker : discovery/docker_setup.md
       - desktop : discovery/desktop.md
       - vLLM Server: discovery/vllm_deploy.md
       - API Server: discovery/api_server_setup.md
