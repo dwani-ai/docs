@@ -1,37 +1,9 @@
-
-- ### TTS - Text to Speech 
-- https://github.com/dwani-ai/tts-indic-server
-```bash
-git clone https://github.com/dwani-ai/tts-indic-server
-cd tts-indic-server
-export HF_TOKEN='this-my-token'
-python -m venv  venv
-source venv/bin/activate
-pip install wheel packaging
-
-pip install -r requirements.txt
-
- pip uninstall torch torchaudio torchvision
-
-pip install torch==2.7.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-
-python src/gh200/main.py --host 0.0.0.0 --port 7864 --config config_two
-```
-
-
----
-
 # TTS Indic Server
 
 ## Overview
 Text to Speech (TTS) for Indian languages using [ai4bharat/IndicF5](https://huggingface.co/ai4bharat/IndicF5)  model.
 
 ## Table of Contents
-- [Live Server](#live-server)
-- [Usage](#usage)
-  - [How to Use the Service](#how-to-use-the-service)
-    - [High Latency Service](#high-latency-service)
-    - [Low Latency Service](#low-latency-service)
 - [Getting Started - Development](#getting-started---development)
   - [For Development (Local)](#for-development-local)
 - [Downloading Indic TTS Model](#downloading-indic-tts-model)
@@ -42,21 +14,10 @@ Text to Speech (TTS) for Indian languages using [ai4bharat/IndicF5](https://hugg
     - [Hindi](#hindi)
   - [Specifying a Different Format](#specifying-a-different-format)
   - [Playing Back the Audio](#playing-back-the-audio)
-  - [Describing the Voice](#describing-the-voice)
-    - [Describing the Voice with Specific Speaker - Suresh](#describing-the-voice-with-specific-speaker---suresh)
-    - [Describing the Voice with Specific Speaker - Anu](#describing-the-voice-with-specific-speaker---anu)
 - [Building Docker Image](#building-docker-image)
 - [Run the Docker Image](#run-the-docker-image)
-- [Available Speakers](#available-speakers)
-- [Tips](#tips)
-- [Description Examples](#description-examples)
 - [Citations](#citations)
 
-## Live Server
-
-We have hosted a Text to Speech (TTS) service that can be used to verify the accuracy of Speech generation. 
-
-- [Gradio Demo](https://huggingface.co/spaces/Sahana31/tts_dhwani_usecase)
 
 ## Getting Started
 
@@ -65,7 +26,7 @@ We have hosted a Text to Speech (TTS) service that can be used to verify the acc
 - **Steps**:
   1. **Create a virtual environment**:
   ```bash
-  python -m venv venv
+  python3.10 -m venv venv
   ```
   2. **Activate the virtual environment**:
   ```bash
@@ -80,11 +41,22 @@ We have hosted a Text to Speech (TTS) service that can be used to verify the acc
     pip install -r requirements.txt
     ```
 
-## Downloading Indic TTS Model
+## Downloading TTS Models
+Models can be downloaded from AI4Bharat's HuggingFace repository:
 
-```bash download_model.sh
-huggingface_cli download ai4bharat/IndicF5
-```
+- [https://huggingface.co/ai4bharat/IndicF5](https://huggingface.co/ai4bharat/IndicF5)
+  - Log in HuggingFace Account
+  - Request Access to the model
+  - https://huggingface.co/docs/hub/security-tokens 
+    - Get a Read token for your account
+
+    ```bash
+    export HF_TOKEN=<YOUR-READ-TOKEN-HERE>
+    ```
+
+    ```bash download_model.sh
+    hf download ai4bharat/IndicF5
+    ```
 
 ### Local Model Run
 ```python
@@ -113,37 +85,62 @@ sf.write("namaste.wav", np.array(audio, dtype=np.float32), samplerate=24000)
 
 - Or Run the python code
 ```bash
+cd src/server
 python tts_indic_f5.py
 ```
 
-
 <!-- 
-### For server development
+
+
+
+sudo docker run --runtime nvidia -it --rm -p 7864:7864 -e HF_TOKEN=$HF_TOKEN slabstech/dwani-tts
+
+sudo docker run --runtime nvidia -it --rm \
+    -p 7864:7864 \
+    -v ~/hf-cache:/data/hf-cache \
+    -e HF_HOME=/data/hf-cache \
+    -e HF_TOKEN=$HF_TOKEN \
+    slabstech/dwani-tts
+
+-->
+
 #### Running with FastAPI Server
 
-**Install dependencies:**
 
-
-Run the server using FastAPI with the desired language (e.g., Kannada):
-- for GPU
+Run the server using FastAPI
+- 
   ```bash
-  python src/server/tts_api.py --port 7860 --host 0.0.0.0 --device gpu
+    python src/server/main.py --host 0.0.0.0 --port 10804
   ```
 
 ### Evaluating Results
-You can evaluate the ASR transcription results using `curl` commands. Below are examples for Kannada audio samples.
+You can evaluate the TTS generation results using `curl` commands. Below are examples for Kannada audio samples.
 
 #### Kannada
 
 ```bash kannada_example.sh
-curl -s -H "content-type: application/json" localhost:7860/v1/audio/speech -d '{"input": "ಉದ್ಯಾನದಲ್ಲಿ ಮಕ್ಕಳ ಆಟವಾಡುತ್ತಿದ್ದಾರೆ ಮತ್ತು ಪಕ್ಷಿಗಳು ಚಿಲಿಪಿಲಿ ಮಾಡುತ್ತಿವೆ."}' -o audio_kannada.mp3
+curl -X 'POST' \
+  'http://localhost:10804/v1/audio/speech' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "text": "ಉದ್ಯಾನದಲ್ಲಿ ಮಕ್ಕಳ ಆಟವಾಡುತ್ತಿದ್ದಾರೆ ಮತ್ತು ಪಕ್ಷಿಗಳು ಚಿಲಿಪಿಲಿ ಮಾಡುತ್ತಿವೆ."
+}' -o kannada-tts-out.wav
 ```
+
 
 #### Hindi
 
 ```bash hindi_example.sh
-curl -s -H "content-type: application/json" localhost:7860/v1/audio/speech -d '{"input": "अरे, तुम आज कैसे हो?"}' -o audio_hindi.mp3
+curl -X 'POST' \
+  'http://localhost:10804/v1/audio/speech' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "text": "अरे, तुम आज कैसे हो?"
+}' -o hindi-tts-output.wav
 ```
+
 
 ### Specifying a Different Format
 
@@ -151,89 +148,30 @@ curl -s -H "content-type: application/json" localhost:7860/v1/audio/speech -d '{
 curl -s -H "content-type: application/json" localhost:7860/v1/audio/speech -d '{"input": "Hey, how are you?", "response_type": "wav"}' -o audio.wav
 ```
 
-### Describing the Voice
+- [For Production (Docker)](#for-production-docker)
+### For Production (Docker)
+- **Prerequisites**: Docker and Docker Compose
+- **Steps**:
+  1. **Start the server**:
+  ```bash
+  export HF_TOKEN=<YOUR-READ-TOKEN-HERE>
+  docker compose -f compose.yaml up -d
+  ```
 
-```bash audio_kannada_describe_voice.sh
-curl -s -H "content-type: application/json" localhost:7860/v1/audio/speech -d '{"input": "ಉದ್ಯಾನದಲ್ಲಿ ಮಕ್ಕಳ ಆಟವಾಡುತ್ತಿದ್ದಾರೆ ಮತ್ತು ಪಕ್ಷಿಗಳು ಚಿಲಿಪಿಲಿ ಮಾಡುತ್ತಿವೆ.", "voice": "A female speaker delivers a slightly expressive and animated speech with a moderate speed and pitch. The recording is of very high quality, with the speakers voice sounding clear and very close up."}'  -o audio_kannada_describe_voice.mp3
+
+## Building Docker Image
+Build the Docker image locally:
+```bash
+docker build -t dwani/tts-indic-server:latest .
+
 ```
 
-#### Describing the Voice with Specific Speaker - Suresh
+### Run the Docker Image
+```bash
+docker run --runtime nvidia -it --rm -p 10804:10804 -e HF_TOKEN=$HF_TOKEN dwani/tts-indic-server:latest
 
-```bash audio_kannada_describe_voice_specific_speaker_suresh.sh
-curl -s -H "content-type: application/json" localhost:7860/v1/audio/speech -d '{"input": "ಉದ್ಯಾನದಲ್ಲಿ ಮಕ್ಕಳ ಆಟವಾಡುತ್ತಿದ್ದಾರೆ ಮತ್ತು ಪಕ್ಷಿಗಳು ಚಿಲಿಪಿಲಿ ಮಾಡುತ್ತಿವೆ.", "voice": "Suresh  speaks at a moderate pace with a slightly monotone tone. The recording is clear, with a close sound and only minimal ambient noise."}'  -o audio_kannada_describe_voice_specfic_speaker_suresh.mp3
 ```
 
-#### Describing the Voice with Specific Speaker - Anu
-
-```bash audio_kannada_describe_voice_specific_speaker_anu.sh
-curl -s -H "content-type: application/json" localhost:7860/v1/audio/speech -d '{"input": "ಉದ್ಯಾನದಲ್ಲಿ ಮಕ್ಕಳ ಆಟವಾಡುತ್ತಿದ್ದಾರೆ ಮತ್ತು ಪಕ್ಷಿಗಳು ಚಿಲಿಪಿಲಿ ಮಾಡುತ್ತಿವೆ.", "voice": "Anu speaks with a high pitch at a normal pace in a clear, close-sounding environment. Her neutral tone is captured with excellent audio quality."}'  -o audio_kannada_describe_voice_specfic_speaker_anu.mp3
-```
-
-
-## Available Speakers
-
-The model includes **69 speakers** across 18 officially supported languages, with each language having a set of recommended voices for optimal performance. Below is a table summarizing the available speakers for each language, along with the recommended ones.
-
-| **Language**      | **Available Speakers**                                       | **Recommended Speakers**       |
-|-------------------|-------------------------------------------------------------|---------------------------------|
-| Assamese          | Amit, Sita, Poonam, Rakesh                                  | Amit, Sita                      |
-| Bengali           | Arjun, Aditi, Tapan, Rashmi, Arnav, Riya                    | Arjun, Aditi                    |
-| Bodo              | Bikram, Maya, Kalpana                                       | Bikram, Maya                    |
-| Chhattisgarhi     | Bhanu, Champa                                              | Bhanu, Champa                   |
-| Dogri             | Karan                                                      | Karan                           |
-| English           | Thoma, Mary, Swapna, Dinesh, Meera, Jatin, Aakash, Sneha, Kabir, Tisha, Chingkhei, Thoiba, Priya, Tarun, Gauri, Nisha, Raghav, Kavya, Ravi, Vikas, Riya | Thoma, Mary                     |
-| Gujarati          | Yash, Neha                                                  | Yash, Neha                      |
-| Hindi             | Rohit, Divya, Aman, Rani                                   | Rohit, Divya                    |
-| Kannada           | Suresh, Anu, Chetan, Vidya                                 | Suresh, Anu                     |
-| Malayalam         | Anjali, Anju, Harish                                       | Anjali, Harish                  |
-| Manipuri          | Laishram, Ranjit                                           | Laishram, Ranjit                |
-| Marathi           | Sanjay, Sunita, Nikhil, Radha, Varun, Isha                  | Sanjay, Sunita                  |
-| Nepali            | Amrita                                                     | Amrita                          |
-| Odia              | Manas, Debjani                                             | Manas, Debjani                  |
-| Punjabi           | Divjot, Gurpreet                                           | Divjot, Gurpreet                |
-| Sanskrit          | Aryan                                                      | Aryan                           |
-| Tamil             | Kavitha, Jaya                                              | Jaya                            |
-| Telugu            | Prakash, Lalitha, Kiran                                    | Prakash, Lalitha                |
-
-## Tips
-* We've set up an [inference guide](https://github.com/huggingface/parler-tts/blob/main/INFERENCE.md) to make generation faster. Think SDPA, torch.compile, batching and streaming!
-* Include the term "very clear audio" to generate the highest quality audio, and "very noisy audio" for high levels of background noise
-* Punctuation can be used to control the prosody of the generations, e.g., use commas to add small breaks in speech
-* The remaining speech features (gender, speaking rate, pitch, and reverberation) can be controlled directly through the prompt
-
-## Description Examples
-
-1. **Aditi - Slightly High-Pitched, Expressive Tone**:
-   _"Aditi speaks with a slightly higher pitch in a close-sounding environment. Her voice is clear, with subtle emotional depth and a normal pace, all captured in high-quality recording."_
-
-2. **Sita - Rapid, Slightly Monotone**:
-   _"Sita speaks at a fast pace with a slightly low-pitched voice, captured clearly in a close-sounding environment with excellent recording quality."_
-
-3. **Tapan - Male, Moderate Pace, Slightly Monotone**:
-   _"Tapan speaks at a moderate pace with a slightly monotone tone. The recording is clear, with a close sound and only minimal ambient noise."_
-
-4. **Sunita - High-Pitched, Happy Tone**:
-   _"Sunita speaks with a high pitch in a close environment. Her voice is clear, with slight dynamic changes, and the recording is of excellent quality."_
-
-5. **Karan - High-Pitched, Positive Tone**:
-   _"Karan’s high-pitched, engaging voice is captured in a clear, close-sounding recording. His slightly slower delivery conveys a positive tone."_
-
-6. **Amrita - High-Pitched, Flat Tone**:
-   _"Amrita speaks with a high pitch at a slow pace. Her voice is clear, with excellent recording quality and only moderate background noise."_
-
-7. **Aditi - Slow, Slightly Expressive**:
-   _"Aditi speaks slowly with a high pitch and expressive tone. The recording is clear, showcasing her energetic and emotive voice."_
-
-8. **Young Male Speaker, American Accent**:
-   _"A young male speaker with a high-pitched American accent delivers speech at a slightly fast pace in a clear, close-sounding recording."_
-
-9. **Bikram - High-Pitched, Urgent Tone**:
-   _"Bikram speaks with a higher pitch and fast pace, conveying urgency. The recording is clear and intimate, with great emotional depth."_
-
-10. **Anjali - High-Pitched, Neutral Tone**:
-    _"Anjali speaks with a high pitch at a normal pace in a clear, close-sounding environment. Her neutral tone is captured with excellent audio quality."_
-
--->
 ## Contributing
 
 We welcome contributions! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
@@ -278,22 +216,28 @@ Also you can join the [discord group](https://discord.gg/WZMCerEZ2P) to collabor
 
 ```
 
+<!-- 
+With the default server (Phase 1 bfloat16), a sentence like the above typically returns in about 7–8 seconds on GPU. **Check success:** the output file should be ~250–260 KB (e.g. `ls -l kannada-tts-out.wav`). If you see a tiny file (e.g. 21–233 bytes), the server returned an error (e.g. 503 model not loaded, 500 ref audio failed); check server logs.
+
+**Faster inference (fewer NFE steps):** Start the server with `TTS_NFE_STEPS=16` to reduce latency (e.g. ~4–6 s per request instead of ~7–8 s):
+  ```bash
+  TTS_NFE_STEPS=16 python src/server/main.py --host 0.0.0.0 --port 10804
+  ```
+  There is a small quality trade-off; try 24 if 16 is too low.   The reference script (`tts_indic_f5.py --steps 16`) can be ~2 s for the same text because it runs a single batch; the API may chunk longer texts so end-to-end latency can be higher.
+
+**Further speed improvements** (see [docs/indic-f5-tts-speed-plan.md](docs/indic-f5-tts-speed-plan.md) for details):
+
+| Option | Effort | Expected gain | Notes |
+|--------|--------|---------------|--------|
+| **Fewer NFE steps** | Done | ~2× with 16 steps | Use `TTS_NFE_STEPS=16` (or try 12/8; more quality loss). |
+| **Phase 2: ONNX Runtime** | Medium | Moderate | Export F5 to ONNX, run with `onnxruntime-gpu` + I/O binding. [Phase 2 runbook](docs/phase2-onnx-runbook.md). |
+| **Phase 3: TensorRT-LLM** | High (~3 h build) | **~4×** (e.g. 3 s → 0.7 s) | Replace Transformer with TRT-LLM engine; path to near real-time. [Runbook](docs/phase3-tensorrt-runbook.md), [F5_TTS_Faster](https://github.com/WGS-note/F5_TTS_Faster). |
+| **Phase 4: Triton server** | High | Same as Phase 3, scalable | Deploy TRT-LLM behind Triton for production. |
+| **Faster GPU** | N/A | Scales with GPU | e.g. L4/A100 vs older cards. |
+-->
+
 
 <!--
-
-
-
-## Alternate forms of Development  
-
-- Check the torch.compile option for fast inference.
-  - Suitable on Nvidia L4 GPU
-  - Source for fast inference - [torch.compile](torch_compile.py) example
-
-- Streaming example
-  - [source code](tts_streaming.py)
-
-
-
 
 ## Usage
 
@@ -310,33 +254,4 @@ curl -X 'POST' \
   -H 'Content-Type: application/json' \
   -d '{"input": "ಉದ್ಯಾನದಲ್ಲಿ ಮಕ್ಕಳ ಆಟವಾಡುತ್ತಿದ್ದಾರೆ ಮತ್ತು ಪಕ್ಷಿಗಳು ಚಿಲಿಪಿಲಿ ಮಾಡುತ್ತಿವೆ.", "voice": "A female speaker delivers a slightly expressive and animated speech with a moderate speed and pitch. The recording is of very high quality, with the speakers voice sounding clear and very close up."}'  -o audio_kannada_gpu_cloud.mp3
 ```
--->
-
-<!-- 
-  - [For Production (Docker)](#for-production-docker)
-### For Production (Docker)
-- **Prerequisites**: Docker and Docker Compose
-- **Steps**:
-  1. **Start the server**:
-  For GPU
-  ```bash
-  docker compose -f compose.yaml up -d
-  ```
-  For CPU only
-  ```bash
-  docker compose -f cpu-compose.yaml up -d
-  ```
-
-
-## Building Docker Image
-Build the Docker image locally:
-```bash
-docker build -t slabstech/tts_indic_server -f Dockerfile .
-```
-
-### Run the Docker Image
-```bash
-docker run --gpus all -it --rm -p 7860:7860 slabstech/tts_indic_server
-```
-
 -->
