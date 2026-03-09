@@ -44,6 +44,8 @@ nav:
       - readme : talk/index.md
       - architecture : talk/architecture.md
       - agents : talk/agents.md
+      - runbook : talk/runbook.md 
+      - environment_variables : talk/environment_variables.md
   - python SDK: python-sdk.md
   - discovery:
       - readme : discovery/index.md
